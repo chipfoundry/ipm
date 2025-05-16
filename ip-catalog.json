@@ -72,35 +72,30 @@
             ]
         },
         {
-            "name": "spm_ixp",
-            "repo": "github.com/marwaneltoukhy/spm_ip",
+            "name": "MS_SPI_XIP_CACHE",
+            "repo": "github.com/chipfoundry/MS_SPI_XIP_CACHE",
             "author": "efabless",
             "email": "efabless@efabless.com",
-            "type": "hard",
+            "type": "soft",
             "category": "digital",
             "tag": [
-                "BUS",
-                "periphery"
-            ],
+                "memory",
+                "flash",
+                "spi",
+                "cache",
+                "XIP"
+             ],
             "status": "SI_validated",
-            "width": "0.25",
-            "height": "0.2",
-            "technology": "sky130",
-            "cell_count": "200",
-            "clk_freq": "10",
+            "width": "n/a",
+            "height": "n/a",
+            "technology": "n/a",
+            "cell_count": "5200",
+            "clk_freq": "40",
             "license": "public",
             "release": [
                 {
-                    "version": "v1.0",
-                    "date": "10-19-2022"
-                },
-                {
-                    "version": "v1.1",
-                    "date": "10-19-2022"
-                },
-                {
-                    "version": "v1.2",
-                    "date": "10-19-2022"
+                    "version": "v1.0.0",
+                    "date": "01-01-2020"
                 }
             ],
             "dependencies": [
