@@ -48,7 +48,7 @@ IPM_DEFAULT_HOME = os.path.join(os.path.expanduser("~"), ".ipm")
 LOCAL_JSON_FILE_NAME = "Installed_IPs.json"
 DEPENDENCIES_FILE_NAME = "dependencies.json"
 REMOTE_JSON_FILE_NAME = (
-    "hhttps://raw.githubusercontent.com/chipfoundry/ipm/refs/heads/main/ip-catalog.json"
+    "https://raw.githubusercontent.com/chipfoundry/ipm/refs/heads/main/ip-catalog.json"
 )
 
 class LocalIP:
