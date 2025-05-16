@@ -70,6 +70,44 @@
                     "date": "10-19-2022"
                 }
             ]
+        },
+        {
+            "name": "MS_SPI_XIP_CACHE",
+            "repo": "github.com/chipfoundry/MS_SPI_XIP_CACHE",
+            "author": "efabless",
+            "email": "efabless@efabless.com",
+            "type": "soft",
+            "category": "digital",
+            "tag": [
+                "memory",
+                "flash",
+                "spi",
+                "cache",
+                "XIP"
+             ],
+            "status": "SI_validated",
+            "width": "n/a",
+            "height": "n/a",
+            "technology": "n/a",
+            "cell_count": "5200",
+            "clk_freq": "40",
+            "license": "public",
+            "release": [
+                {
+                    "version": "v1.0.0",
+                    "date": "01-01-2020"
+                }
+            ],
+            "dependencies": [
+                {
+                    "name": "dummy_ip",
+                    "version": "v1.0"
+                },
+                {
+                    "name": "dummy_ip2",
+                    "version": "v1.0"
+                }
+            ]
         }
     ]
 }
