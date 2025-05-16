@@ -108,7 +108,7 @@
                     "version": "v1.0"
                 }
             ]
-        }
+        },
         {
             "name": "DFFRAM128x32",
             "description": "512 bytes (128x32) DFFRAM hardened using OpenLane",
@@ -160,6 +160,6 @@
                     "sha256": "ddefce8e60076b893e748284f9c0d384c43b61ca4122fe31c298cfee38ef4661"
                 }
             }
-        },
+        }
     ]
 }
