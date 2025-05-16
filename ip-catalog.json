@@ -109,5 +109,57 @@
                 }
             ]
         }
+        {
+            "name": "DFFRAM128x32",
+            "description": "512 bytes (128x32) DFFRAM hardened using OpenLane",
+            "repo": "github.com/efabless/OL-DFFRAM",
+            "author": "Efabless Corp.",
+            "email": "ip_admin@efabless.com",
+            "owner": "AUCOHL",
+            "category": "digital",
+            "technology": "sky130",
+            "license": "APACHE 2.0",
+            "tags": [
+                "SRAM",
+                "DFFRAM",
+                "memory"
+            ],
+            "release": {
+                "v1.0.0": {
+                    "date": "7-30-2023",
+                    "maturity": "Implemented",
+                    "bus": [
+                        "AHBL"
+                    ],
+                    "type": "hard",
+                    "width": "551.115",
+                    "height": "561.835",
+                    "cell_count": "0",
+                    "clock_freq_mhz": "40",
+                    "supply_voltage": [
+                        "1.8"
+                    ],
+                    "draft": false,
+                    "sha256": "c7d12110cbea1d99ce624a1a6ea2743b20a42d11b0b3150b98a5ad6167674812"
+                },
+                "v1.0.1": {
+                    "date": "7-30-2023",
+                    "maturity": "Verified",
+                    "bus": [
+                        "AHBL"
+                    ],
+                    "type": "hard",
+                    "width": "551.115",
+                    "height": "561.835",
+                    "cell_count": "0",
+                    "clock_freq_mhz": "40",
+                    "supply_voltage": [
+                        "1.8"
+                    ],
+                    "draft": false,
+                    "sha256": "ddefce8e60076b893e748284f9c0d384c43b61ca4122fe31c298cfee38ef4661"
+                }
+            }
+        },
     ]
 }
