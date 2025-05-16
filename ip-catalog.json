@@ -97,16 +97,6 @@
                     "version": "v1.0.0",
                     "date": "01-01-2020"
                 }
-            ],
-            "dependencies": [
-                {
-                    "name": "dummy_ip",
-                    "version": "v1.0"
-                },
-                {
-                    "name": "dummy_ip2",
-                    "version": "v1.0"
-                }
             ]
         }
     ]
