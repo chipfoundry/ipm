@@ -210,14 +210,9 @@ def install_cmd(ip, ip_root, ipm_iproot, overwrite, technology="sky130", version
     valid_ipm_dir = check_ipm_directory(console, ipm_iproot)
     valid_ip_dir = check_ip_root_dir(console, ip_root)
     if valid_ipm_dir and valid_ip_dir:
-        result = install(
+        install(
             console, ip, ipm_iproot, overwrite, technology=technology, version=version, ip_root=ip_root, deps_file=deps_file
         )
-        if result is False:
-            # Installation failed but handled gracefully
-            console.print("[yellow]Installation could not be completed.")
-            return 1
-        return 0
 
 
 def install(
@@ -238,9 +233,8 @@ def install(
             print(
                 "Please provide a valid IP name, to check all the available IPs invoke 'ipm ls'"
             )
-            return False
         else:
-            result = install_ip(
+            install_ip(
                 console=console,
                 ipm_iproot=ipm_iproot,
                 ip=ip,
@@ -250,7 +244,6 @@ def install(
                 ip_root=ip_root,
                 deps_file=deps_file
             )
-            return result
 
 
 @click.command("install-dep")
