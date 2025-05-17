@@ -44,6 +44,8 @@ IPM_REPO_ID = f"{IPM_REPO_OWNER}/{IPM_REPO_NAME}"
 IPM_REPO_HTTPS = f"https://github.com/{IPM_REPO_ID}"
 IPM_REPO_API = f"https://api.github.com/repos/{IPM_REPO_ID}"
 IPM_DEFAULT_HOME = os.path.join(os.path.expanduser("~"), ".ipm")
+# Default IP installation path with environment variable override
+IP_DEFAULT_ROOT = os.getenv("IP_ROOT") or os.path.join(os.path.expanduser("~"), ".ipm")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # GitHub Personal Access Token
 
 LOCAL_JSON_FILE_NAME = "Installed_IPs.json"
@@ -344,8 +346,14 @@ def check_ipm_directory(console: rich.console.Console, ipm_iproot) -> bool:
 
 def check_ip_root_dir(console: rich.console.Console, ip_root) -> bool:
     if not os.path.isdir(ip_root):
-        console.print(f"[red] ip-root {ip_root} can't be found")
-        return False
+        # Create the directory if it doesn't exist
+        try:
+            console.print(f"[yellow]The IP root directory {ip_root} doesn't exist. Creating it...")
+            os.makedirs(ip_root, exist_ok=True)
+            return True
+        except Exception as e:
+            console.print(f"[red]Error creating ip-root directory {ip_root}: {str(e)}")
+            return False
     else:
         return True
 
@@ -473,7 +481,11 @@ def list_IPs(console: rich.console.Console, ipm_iproot, remote, category="all"):
                 console.print("[red]No IPs Found")
 
 
-def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="all"):
+def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="all", ip_root=None):
+    # Use the environment-aware default if ip_root is None
+    if ip_root is None:
+        ip_root = IP_DEFAULT_ROOT
+        
     if remote:
         resp = requests.get(REMOTE_JSON_FILE_NAME)
         data = json.loads(resp.text)
@@ -517,8 +529,10 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
                 latest_version = versions[-1]  # Assume last one is latest
                 latest_release = ip_data["release"][latest_version]
                 
-                # For local display we need IP path
-                ip_path = ip_data.get("ip_root", "") + "/" + ip_name
+                # For local display we need IP path - use current ip_root if the stored one is missing
+                # This handles the case where IPs were installed before IP_ROOT was implemented
+                stored_ip_root = ip_data.get("ip_root", ip_root)
+                ip_path = os.path.join(stored_ip_root, ip_name)
                 
                 table.add_row(
                     ip_data["category"],
@@ -549,6 +563,10 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
         if category == "all":
             for key, values in data.items():
                 for value in values:
+                    # Use stored ip_root or default to current ip_root if missing
+                    stored_ip_root = value.get("ip_root", ip_root)
+                    ip_path = os.path.join(stored_ip_root, value["name"])
+                    
                     table.add_row(
                         key,
                         value["name"],
@@ -564,7 +582,7 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
                         # value["height"],
                         value["technology"],
                         value["license"],
-                        value["ip_root"] + "/" + value["name"]
+                        ip_path
                     )
                 total_IPs = total_IPs + len(values)
             if total_IPs > 0:
@@ -574,6 +592,10 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
                 console.print("[red]No IPs Found")
         else:
             for value in data[category]:
+                # Use stored ip_root or default to current ip_root if missing
+                stored_ip_root = value.get("ip_root", ip_root)
+                ip_path = os.path.join(stored_ip_root, value["name"])
+                
                 table.add_row(
                     category,
                     value["name"],
@@ -589,7 +611,7 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
                     # value["height"],
                     value["technology"],
                     value["license"],
-                    value["ip_root"] + "/" + value["name"]
+                    ip_path
                 )
             total_IPs = total_IPs + len(data[category])
             if total_IPs > 0:
@@ -952,6 +974,10 @@ def uninstall_ip(console: rich.console.Console, ipm_iproot, ip, ip_root, deps_fi
 
 def check_IP(console, ipm_iproot, ip, update=False, version=None, technology="sky130", ip_root=None):
     update_counter = 0
+    # Use the environment-aware default if ip_root is None
+    if ip_root is None:
+        ip_root = IP_DEFAULT_ROOT
+        
     if ip == "all":  # Checks or updates all installed IPs
         IP_list = get_IP_list(ipm_iproot, remote=False)
         if len(IP_list) == 0:  # No installed IPs

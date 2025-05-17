@@ -26,7 +26,8 @@ from .manage import (
     update_cmd,
     package_check_cmd,
     info_cmd,
-    install_deps_cmd
+    install_deps_cmd,
+    cleanup_cmd
 )
 
 
@@ -50,6 +51,7 @@ cli.add_command(update_cmd)
 cli.add_command(package_check_cmd)
 cli.add_command(info_cmd)
 cli.add_command(install_deps_cmd)
+cli.add_command(cleanup_cmd)
 
 
 if __name__ == "__main__":
