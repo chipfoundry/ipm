@@ -195,34 +195,82 @@ class RemoteIP:
     def get_info(self, technology="sky130", version=None):
         resp = requests.get(REMOTE_JSON_FILE_NAME)
         data = json.loads(resp.text)
-        for key, values in data.items():
-            for value in values:
-                if value["name"] == self.ip and value["technology"] == technology:
-                    self.name = self.ip
-                    self.repo = value["repo"]
-                    self.release = value["release"]
-                    if version is None:
-                        self.version = value["release"][-1]["version"]
-                        self.date = value["release"][-1]["date"]
+        
+        # Check if the IP name exists directly as a key in the data
+        if self.ip in data:
+            ip_data = data[self.ip]
+            
+            # Check if technology matches
+            if ip_data.get("technology") == technology:
+                self.name = self.ip
+                self.repo = ip_data["repo"]
+                
+                # Handle release dictionary structure
+                self.release = []  # Still maintain a list structure for compatibility
+                
+                if version is None:
+                    # Get the latest version (assuming semantic versioning)
+                    latest_version = sorted(ip_data["release"].keys())[-1]
+                    release_info = ip_data["release"][latest_version]
+                    
+                    # Create a release entry with the desired format
+                    release_entry = {
+                        "version": latest_version,
+                        "date": release_info.get("date", ""),
+                        "type": release_info.get("type", ""),
+                        "width": release_info.get("width", ""),
+                        "height": release_info.get("height", ""),
+                        "cell_count": release_info.get("cell_count", "0"),
+                        "clock_freq_mhz": release_info.get("clock_freq_mhz", "")
+                    }
+                    self.release.append(release_entry)
+                    
+                    # Set the main version and date
+                    self.version = latest_version
+                    self.date = release_info.get("date", "")
+                else:
+                    # Try to find the specific version
+                    if version in ip_data["release"]:
+                        release_info = ip_data["release"][version]
+                        
+                        # Create a release entry with the desired format
+                        release_entry = {
+                            "version": version,
+                            "date": release_info.get("date", ""),
+                            "type": release_info.get("type", ""),
+                            "width": release_info.get("width", ""),
+                            "height": release_info.get("height", ""),
+                            "cell_count": release_info.get("cell_count", "0"),
+                            "clock_freq_mhz": release_info.get("clock_freq_mhz", "")
+                        }
+                        self.release.append(release_entry)
+                        
+                        # Set the main version and date
+                        self.version = version
+                        self.date = release_info.get("date", "")
                     else:
-                        for v in value["release"]:
-                            if v["version"] == version:
-                                self.version = v["version"]
-                                self.date = v["date"]
-                    self.author = value["author"]
-                    self.email = value["email"]
-                    self.category = key
-                    self.type = value["type"]
-                    self.status = value["status"]
-                    self.width = value["width"]
-                    self.height = value["height"]
-                    self.technology = technology
-                    self.tag = value["tag"]
-                    self.cell_count = value["cell_count"]
-                    self.clk_freq = value["clk_freq"]
-                    self.license = value["license"]
-        release_url = f"https://{self.repo}/releases/download/{self.version}/{self.version}.tar.gz"
-        self.release_url = release_url
+                        # Version not found, handle accordingly
+                        return
+                
+                # Extract the remaining properties
+                self.author = ip_data.get("author", "")
+                self.email = ip_data.get("email", "")
+                self.category = ip_data.get("category", "digital")  # Default to digital if not specified
+                
+                # Use values from release_info where appropriate
+                self.type = release_info.get("type", "")
+                self.status = release_info.get("maturity", "")
+                self.width = release_info.get("width", "")
+                self.height = release_info.get("height", "")
+                self.technology = technology
+                self.tag = ip_data.get("tags", [])
+                self.cell_count = release_info.get("cell_count", "0")
+                self.clk_freq = release_info.get("clock_freq_mhz", "")
+                self.license = ip_data.get("license", "")
+                
+                # Construct release URL
+                release_url = f"https://{self.repo}/releases/download/{self.version}/{self.version}.tar.gz"
+                self.release_url = release_url
 
 
 def opt_ipm_iproot(function: Callable):
@@ -315,55 +363,99 @@ def list_IPs(console: rich.console.Console, ipm_iproot, remote, category="all"):
     table.add_column("License", style="magenta")
 
     total_IPs = 0
-    if category == "all":
-        for key, values in data.items():
-            for value in values:
+    
+    if remote:
+        # Handle new JSON structure for remote data
+        if category == "all":
+            for ip_name, ip_data in data.items():
+                # Sort versions to get the latest one
+                latest_version = sorted(ip_data["release"].keys())[-1]
+                release_info = ip_data["release"][latest_version]
+                
                 table.add_row(
-                    key,
+                    ip_data.get("category", "digital"),  # Default to digital
+                    ip_name,
+                    latest_version,
+                    ip_data.get("author", ""),
+                    release_info.get("type", ""),
+                    ",".join(ip_data.get("tags", [])),
+                    release_info.get("maturity", ""),
+                    ip_data.get("technology", ""),
+                    ip_data.get("license", "")
+                )
+                total_IPs += 1
+                
+            if total_IPs > 0:
+                console.print(table)
+                console.print(f"Total {total_IPs} IP(s)")
+            else:
+                console.print("[red]No IPs Found")
+        else:
+            # List IPs for a specific category
+            for ip_name, ip_data in data.items():
+                if ip_data.get("category", "") == category:
+                    latest_version = sorted(ip_data["release"].keys())[-1]
+                    release_info = ip_data["release"][latest_version]
+                    
+                    table.add_row(
+                        category,
+                        ip_name,
+                        latest_version,
+                        ip_data.get("author", ""),
+                        release_info.get("type", ""),
+                        ",".join(ip_data.get("tags", [])),
+                        release_info.get("maturity", ""),
+                        ip_data.get("technology", ""),
+                        ip_data.get("license", "")
+                    )
+                    total_IPs += 1
+                    
+            if total_IPs > 0:
+                console.print(table)
+                console.print(f"Total {total_IPs} IP(s)")
+            else:
+                console.print("[red]No IPs Found")
+    else:
+        # Original code for local data
+        if category == "all":
+            for key, values in data.items():
+                for value in values:
+                    table.add_row(
+                        key,
+                        value["name"],
+                        value["version"],
+                        value["author"],
+                        value["type"],
+                        ",".join(value["tag"]),
+                        value["status"],
+                        value["technology"],
+                        value["license"],
+                    )
+                total_IPs = total_IPs + len(values)
+            if total_IPs > 0:
+                console.print(table)
+                console.print(f"Total {total_IPs} IP(s)")
+            else:
+                console.print("[red]No IPs Found")
+        else:
+            for value in data[category]:
+                table.add_row(
+                    category,
                     value["name"],
-                    value["release"][-1]["version"],
+                    value["version"],
                     value["author"],
-                    # value["release"][-1]["date"],
                     value["type"],
                     ",".join(value["tag"]),
-                    # value["cell_count"],
-                    # value["clk_freq"],
                     value["status"],
-                    # value["width"],
-                    # value["height"],
                     value["technology"],
                     value["license"],
                 )
-            total_IPs = total_IPs + len(values)
-        if total_IPs > 0:
-            console.print(table)
-            console.print(f"Total {total_IPs} IP(s)")
-        else:
-            console.print("[red]No IPs Found")
-    else:
-        for value in data[category]:
-            table.add_row(
-                key,
-                value["name"],
-                value["release"][-1]["version"],
-                value["author"],
-                # value["release"][-1]["date"],
-                value["type"],
-                ",".join(value["tag"]),
-                # value["cell_count"],
-                # value["clk_freq"],
-                value["status"],
-                # value["width"],
-                # value["height"],
-                value["technology"],
-                value["license"],
-            )
-        total_IPs = total_IPs + len(data[category])
-        if total_IPs > 0:
-            console.print(table)
-            console.print(f"Total {total_IPs} IP(s)")
-        else:
-            console.print("[red]No IPs Found")
+            total_IPs = total_IPs + len(data[category])
+            if total_IPs > 0:
+                console.print(table)
+                console.print(f"Total {total_IPs} IP(s)")
+            else:
+                console.print("[red]No IPs Found")
 
 
 def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="all"):
@@ -423,7 +515,7 @@ def list_IPs_local(console: rich.console.Console, ipm_iproot, remote, category="
     else:
         for value in data[category]:
             table.add_row(
-                key,
+                category,
                 value["name"],
                 value["version"],
                 value["author"],
@@ -455,20 +547,22 @@ def get_IP_list(ipm_iproot, remote):
     if remote:
         resp = requests.get(REMOTE_JSON_FILE_NAME)
         data = json.loads(resp.text)
+        # For remote data with the new structure, the IP names are the keys
+        IP_list = list(data.keys())
     else:
         JSON_FILE = os.path.join(IPM_DIR_PATH, LOCAL_JSON_FILE_NAME)
         with open(JSON_FILE) as json_file:
             data = json.load(json_file)
-    for key, values in data.items():
-        for value in values:
-            IP_list.append(value["name"])
+        # Original code for local data
+        for key, values in data.items():
+            for value in values:
+                IP_list.append(value["name"])
     return IP_list
 
 
 def get_IP_info(console: rich.console.Console, ipm_iproot, ip, remote):
     IPM_DIR_PATH = os.path.join(ipm_iproot)
     JSON_FILE = ""
-    # IP_list = []
     table = Table()
     table.add_column("Category", style="cyan")
     table.add_column("IP Name", style="magenta")
@@ -484,34 +578,59 @@ def get_IP_info(console: rich.console.Console, ipm_iproot, ip, remote):
     table.add_column("Height (um)")
     table.add_column("Technology", style="cyan")
     table.add_column("License", style="magenta")
+    
     if remote:
         resp = requests.get(REMOTE_JSON_FILE_NAME)
         data = json.loads(resp.text)
+        
+        # Check if IP exists in the new structure
+        if ip in data:
+            ip_data = data[ip]
+            
+            # For each version in the release dictionary
+            for version, release_info in ip_data["release"].items():
+                table.add_row(
+                    ip_data.get("category", "digital"),  # Default to digital
+                    ip,
+                    version,
+                    ip_data.get("author", ""),
+                    release_info.get("date", ""),
+                    release_info.get("type", ""),
+                    ",".join(ip_data.get("tags", [])),
+                    release_info.get("cell_count", "0"),
+                    release_info.get("clock_freq_mhz", ""),
+                    release_info.get("maturity", ""),
+                    release_info.get("width", ""),
+                    release_info.get("height", ""),
+                    ip_data.get("technology", ""),
+                    ip_data.get("license", "")
+                )
     else:
+        # Original code for local data
         JSON_FILE = os.path.join(IPM_DIR_PATH, LOCAL_JSON_FILE_NAME)
         with open(JSON_FILE) as json_file:
             data = json.load(json_file)
-    for key, values in data.items():
-        for value in values:
-            if value["name"] == ip:
-                for i in range(0, len(value["release"])):
-                    table.add_row(
-                        key,
-                        value["name"],
-                        value["release"][i]["version"],
-                        value["author"],
-                        value["release"][i]["date"],
-                        value["type"],
-                        ",".join(value["tag"]),
-                        value["cell_count"],
-                        value["clk_freq"],
-                        value["status"],
-                        value["width"],
-                        value["height"],
-                        value["technology"],
-                        value["license"],
-                    )
-
+        for key, values in data.items():
+            for value in values:
+                if value["name"] == ip:
+                    for i in range(0, len(value["release"])):
+                        table.add_row(
+                            key,
+                            value["name"],
+                            value["release"][i]["version"],
+                            value["author"],
+                            value["release"][i]["date"],
+                            value["type"],
+                            ",".join(value["tag"]),
+                            value["cell_count"],
+                            value["clk_freq"],
+                            value["status"],
+                            value["width"],
+                            value["height"],
+                            value["technology"],
+                            value["license"],
+                        )
+    
     console.print(table)
 
 
@@ -628,6 +747,9 @@ def install_deps_ip(
             file = tarfile.open(tarball_path)
             file.extractall(ip_root)
             file.close
+	    file = tarfile.open(tarball_path)
+            file.extractall(ip_root)
+            file.close()
             os.remove(tarball_path)
             console.print(
                 f"[green]Successfully installed {ip} version {remote_ip.version} to the directory {ip_path}"
@@ -859,7 +981,7 @@ def package_check(console, ipm_iproot, ip, version, gh_repo):
                     f.write(release_tarball_response.raw.read())
                 file = tarfile.open(tarball_path)
                 file.extractall(package_check_path)
-                file.close
+                file.close()
                 os.remove(tarball_path)
                 console.print(
                     "[magenta][STEP 4]:", "Checking the JSON file content"
