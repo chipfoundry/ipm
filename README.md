@@ -19,8 +19,8 @@ ipm --version
 
 ## Usage
 
-### IPM_IPROOT
-IPM requires an IP Root. This IP root is where all your IPs will be installed and it can be anywhere on your computer, but by default it's the folder ```~/.ipm``` in your home directory. If you have the variable ```IPM_IPROOT``` set, ipm will use that instead. You can also manually override both values by supplying the ```--ipm-iproot``` command line argument. To check where is your current root just run ```ipm``` in your terminal and it should display where the IPs will be installed 
+### IP_ROOT
+IPM requires an IP Root. This IP root is where all your IPs will be installed and it can be anywhere on your computer, but by default it's the folder ```~/.ipm``` in your home directory. If you have the variable ```IP_ROOT``` set, ipm will use that instead. You can also manually override both values by supplying the ```--ip-root``` command line argument. To check where is your current root just run ```ipm``` in your terminal and it should display where the IPs will be installed 
 
 ### Listing all Verified IPs
 ```bash
