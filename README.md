@@ -139,24 +139,37 @@ Your ```<ip>.json``` file should look like:
 
 ```
 {
-    "name" : "spm",
-    "repo": "github.com/shalan/spm",
-    "author" : "shalan",
-    "email": "mshalan@aucegypt.edu",
-    "version" : "0.9",
-    "date": "9-21-2022",
-    "category": "digital",
-    "tag": ["BUS"],
-    "type": "hard",
-    "status": "SI_validated",
-    "width": "0.25",
-    "height": "0.2",
-    "technology": "sky130",
-    "cell_count": 200,
-    "clk_freq": 10,
-    "license": "public"
+    "info": {
+        "name": "<ip name>",
+        "description": "<ip_description>",
+        "repo": "<src repo>",
+        "owner": "<owner of IP>",
+        "license": "<license of IP>",
+        "author": "<author of IP>",
+        "email": "<email of author/owner>",
+        "version": "<IP version>",
+        "date": "<mm-dd-yyyy>",
+        "category": "<analog/digital/AMS>",
+        "tags": [
+            "<tags for ip>"
+        ],
+        "bus": [
+            "<APB|AHBL|WB|generic>"
+        ],
+        "type": "<hard|soft|firm|hybrid",
+        "maturity": "<Verified|FPGA Validated|SI Validated|Production Ready>",
+        "cell_count": "<number of cells in ip>",
+        "width": "<width of IP in um>",
+        "height": "<height of IP in um>",
+        "technology": "<sky130A|sky130B|gf180mcuC|gf180mcuD|n/a>",
+        "clock_freq_mhz": "<clock frequency of IP>",
+        "supply_voltage": [
+            "<supply voltage of IP>"
+        ]
+    }
 }
 ```
+
 **NOTE**
 
 `date` should be in the form: `mm-dd-yyyy`
