@@ -1358,7 +1358,7 @@
     },
     "EF_DAC1001_DI": {
         "description": "10-Bit Switching Capacitor Array Digital to Analog Converter (DAC) with a digital interface.",
-        "repo": "github.com/chipfoundry/EF_IPs",
+        "repo": "github.com/chipfoundry/EF_DAC1001_DI",
         "author": "Ahmed Reda",
         "email": "ahmed.reda@efabless.com",
         "owner": "Efabless Corp.",
