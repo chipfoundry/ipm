@@ -5085,7 +5085,7 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "S/H",
+            "S/H"
         ],
         "release": {
             "v1.0.0": {
