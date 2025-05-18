@@ -1483,8 +1483,8 @@
         }
     },
     "EF_ADCS1008A": {
-        "description": "A digital controller for 8 Channel 10-bit SAR ADC.",
-        "repo": "github.com/chipfoundry/EF_ADC1008A",
+        "description":"A digital controller for EF_ADCS1008NC, 8 Channel 10-bit SAR ADC",
+        "repo": "github.com/chipfoundry/EF_ADCS1008A",
         "author": "Efabless Corp.",
         "email": "ip_admin@chipfoundry.io",
         "owner": "Efabless Corp.",
@@ -4573,38 +4573,8 @@
             }
         }
     },
-    "EF_ADC1008A": {
-        "description": "ADC1008A IP",
-        "repo": "github.com/chipfoundry/EF_ADC1008A",
-        "author": "Efabless Corp.",
-        "email": "ip_admin@chipfoundry.io",
-        "owner": "Efabless Corp.",
-        "category": "digital",
-        "technology": "n/a",
-        "license": "Apache 2.0",
-        "tags": [
-            "ADC",
-            "Analog"
-        ],
-        "release": {
-            "v1.0.3": {
-                "date": "2025-1-9",
-                "bus": [],
-                "type": "hard",
-                "width": "0",
-                "height": "0",
-                "cell_count": "n/a",
-                "clock_freq_mhz": "n/a",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": false,
-                "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
-            }
-        }
-    },
     "EF_ADCS1008NC": {
-        "description": "ADCS1008NC IP",
+        "description": "10-Bit, 8-channel SAR Analog-Digital-Converter without SAR controller",
         "repo": "github.com/chipfoundry/EF_ADCS1008NC",
         "author": "Efabless Corp.",
         "email": "ip_admin@chipfoundry.io",
