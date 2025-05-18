@@ -4576,9 +4576,7 @@
         "technology": "sky130",
         "license": "APACHE 2.0",
         "tags": [
-            "Digital",
-            "Analog",
-            "Converter"
+            "Digital Analog Converter"
         ],
         "release": {
             "v1.0.0": {
@@ -4639,14 +4637,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "ADC",
-            "Analog"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4667,14 +4665,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "ADC",
-            "Analog"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4695,14 +4693,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "DLL",
-            "Clock"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4723,8 +4721,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "DMAC",
-            "AHBL"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4751,14 +4749,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "LDO",
-            "1V8"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4807,8 +4805,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "QSPI",
-            "FLASH"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4835,14 +4833,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "SRAM",
-            "4KB"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4863,8 +4861,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "USB",
-            "CDC"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4891,7 +4889,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "uvm"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4918,8 +4917,8 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "adc",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4946,14 +4945,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "switches",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4974,14 +4973,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "comp",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5002,14 +5001,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "cdac",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5030,14 +5029,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "opamp",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5058,14 +5057,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "por",
-            "power"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5086,14 +5085,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "rdac",
-            "3v"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5114,14 +5113,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "sample",
-            "hold"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5142,14 +5141,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "por",
-            "power"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
