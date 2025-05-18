@@ -4553,7 +4553,7 @@
             "Converter"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "date": "9-1-2023",
                 "maturity": "Implemented",
                 "bus": [
@@ -4587,7 +4587,7 @@
             "Analog"
         ],
         "release": {
-            "v1.0.0": {
+            "v1.0.3": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4615,7 +4615,7 @@
             "Analog"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4643,7 +4643,7 @@
             "Clock"
         ],
         "release": {
-            "v1.0.0": {
+            "v1.0.1": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4671,7 +4671,7 @@
             "AHBL"
         ],
         "release": {
-            "v1.0.0": {
+            "v1.0.9": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4699,7 +4699,7 @@
             "1V8"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4756,7 +4756,7 @@
             "FLASH"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4840,7 +4840,7 @@
             "uvm"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4897,7 +4897,7 @@
             "3v"
         ],
         "release": {
-            "none": {
+            "v1.0.2": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4926,7 +4926,7 @@
             "3v"
         ],
         "release": {
-            "none": {
+            "v1.0.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4955,7 +4955,7 @@
             "3v"
         ],
         "release": {
-            "none": {
+            "v1.0.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5071,7 +5071,7 @@
             "hold"
         ],
         "release": {
-            "none": {
+            "v1.0.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
