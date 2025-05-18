@@ -4724,36 +4724,6 @@
             }
         }
     },
-    "EF_PSRAM_CTRL_OLD-DONT-USE-": {
-        "description": "PSRAM CTRL OLD IP",
-        "repo": "github.com/chipfoundry/EF_PSRAM_CTRL_OLD-DONT-USE-",
-        "author": "Efabless Corp.",
-        "email": "ip_admin@chipfoundry.io",
-        "owner": "Efabless Corp.",
-        "category": "digital",
-        "technology": "n/a",
-        "license": "Apache 2.0",
-        "tags": [
-            "fifo",
-            "clock mux"
-        ],
-        "release": {
-            "v1.0.0": {
-                "date": "2025-1-9",
-                "bus": [],
-                "type": "soft",
-                "width": "0",
-                "height": "0",
-                "cell_count": "n/a",
-                "clock_freq_mhz": "n/a",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": false,
-                "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
-            }
-        }
-    },
     "EF_QSPI_FLASH_CTRL": {
         "description": "QSPI FLASH CTRL IP",
         "repo": "github.com/chipfoundry/EF_QSPI_FLASH_CTRL",
