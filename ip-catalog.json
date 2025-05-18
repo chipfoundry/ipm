@@ -1488,11 +1488,11 @@
         "author": "Efabless Corp.",
         "email": "ip_admin@chipfoundry.io",
         "owner": "Efabless Corp.",
-        "category": "ams",
+        "category": "digital",
         "technology": "n/a",
         "license": "APACHE 2.0",
         "tags": [
-            "peripheral",
+            "controller",
             "data converter"
         ],
         "release": {
@@ -4579,12 +4579,12 @@
         "author": "Efabless Corp.",
         "email": "ip_admin@chipfoundry.io",
         "owner": "Efabless Corp.",
-        "category": "digital",
+        "category": "ams",
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
             "ADC",
-            "Analog"
+            "SAR"
         ],
         "release": {
             "none": {
