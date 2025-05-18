@@ -4919,7 +4919,7 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "switches",
+            "switches"
         ],
         "release": {
             "v1.0.0": {
@@ -5002,7 +5002,7 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "opamp",
+            "opamp"
         ],
         "release": {
             "v1.0.0": {
