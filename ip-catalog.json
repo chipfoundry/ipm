@@ -4703,7 +4703,7 @@
             "4KB"
         ],
         "release": {
-            "nnot-released": {
+            "not-released": {
                 "maturity": "tbd",
                 "date": "2025-1-9",
                 "bus": [],
