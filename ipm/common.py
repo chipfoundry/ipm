@@ -51,7 +51,7 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # GitHub Personal Access Token
 LOCAL_JSON_FILE_NAME = "Installed_IPs.json"
 DEPENDENCIES_FILE_NAME = "dependencies.json"
 REMOTE_JSON_FILE_NAME = (
-    "https://raw.githubusercontent.com/chipfoundry/ipm/refs/heads/main/ip-catalog-platform.json"
+    "https://raw.githubusercontent.com/chipfoundry/ipm/refs/heads/main/ip-catalog.json"
 )
 
 class LocalIP:
