@@ -4538,41 +4538,6 @@
             }
         }
     },
-    "EF_DACSCA1001": {
-        "description": "10-Bit Rail-to- Rail Digital-Analog-Converter",
-        "repo": "github.com/chipfoundry/EF_DACSCA1001",
-        "author": "Efabless",
-        "email": "ip_admin@chipfoundry.io",
-        "owner": "Efabless Corp",
-        "category": "mixed",
-        "technology": "sky130",
-        "license": "APACHE 2.0",
-        "tags": [
-            "Digital",
-            "Analog",
-            "Converter"
-        ],
-        "release": {
-            "none": {
-                "date": "9-1-2023",
-                "maturity": "Implemented",
-                "bus": [
-                    "n/a"
-                ],
-                "type": "hard",
-                "width": "0.365",
-                "height": "0.168",
-                "cell_count": "n/a",
-                "clock_freq_mhz": "n/a",
-                "supply_voltage": [
-                    "3.3",
-                    "1.8"
-                ],
-                "draft": false,
-                "sha256": "089fb983e1f42ed95ce9f3592b3a5252f046c31cd0b8346590e13598c2fc2d6d"
-            }
-        }
-    },
     "EF_ADCS1008NC": {
         "description": "10-Bit, 8-channel SAR Analog-Digital-Converter without SAR controller",
         "repo": "github.com/chipfoundry/EF_ADCS1008NC",
@@ -4587,7 +4552,7 @@
             "SAR"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4677,7 +4642,7 @@
             "1V8"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4708,7 +4673,7 @@
             "FLASH"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4738,8 +4703,8 @@
             "4KB"
         ],
         "release": {
-            "none": {
-                "maturity": "Implemented",
+            "nnot-released": {
+                "maturity": "tbd",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4750,7 +4715,7 @@
                 "supply_voltage": [
                     "n/a"
                 ],
-                "draft": false,
+                "draft": true,
                 "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
             }
         }
@@ -4795,10 +4760,12 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "uvm"
+            "uvm",
+            "vip",
+            "verification"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4952,7 +4919,7 @@
             "3v"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4983,7 +4950,7 @@
             "power"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5014,7 +4981,7 @@
             "3v"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5076,7 +5043,7 @@
             "power"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5107,7 +5074,7 @@
             "clock mux"
         ],
         "release": {
-            "none": {
+            "v0.1.0": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
