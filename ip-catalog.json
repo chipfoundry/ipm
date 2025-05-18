@@ -5134,7 +5134,23 @@
         "tags": [
             "por",
             "power"
-        ]
+        ],
+        "release": {
+            "none": {
+                "maturity": "Implemented",
+                "date": "2025-1-9",
+                "bus": [],
+                "type": "hard",
+                "width": "0",
+                "height": "0",
+                "cell_count": "0",
+                "clock_freq_mhz": "n/a",
+               "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": false,
+                "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
+            }
         }
     },
     "sky130_ef_ip__template": {
