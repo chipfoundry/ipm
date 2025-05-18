@@ -1358,7 +1358,7 @@
         "description": "10-Bit Switching Capacitor Array Digital to Analog Converter (DAC) with a digital interface.",
         "repo": "github.com/chipfoundry/EF_DAC1001_DI",
         "author": "Ahmed Reda",
-        "email": "ahmed.reda@chipfoundry.io",
+        "email": "ahmed.reda@efabless.com",
         "owner": "Efabless Corp.",
         "category": "ams",
         "technology": "sky130",
@@ -2224,7 +2224,7 @@
         "description": "ultra-low-power, low speed crystal oscillator",
         "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_32k",
         "author": "Tim Edwards",
-        "email": "tim@chipfoundry.io",
+        "email": "tim@efabless.com",
         "owner": "Efabless Corp.",
         "category": "analog",
         "technology": "sky130",
@@ -2275,7 +2275,7 @@
         "description": "Digital wrapper for an ultra-low-power, low speed crystal oscillator",
         "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_32k_DI",
         "author": "Marwan Abbas",
-        "email": "marwan.abbas@chipfoundry.io",
+        "email": "marwan.abbas@efabless.com",
         "owner": "Efabless Corp.",
         "category": "analog",
         "technology": "sky130",
@@ -2341,7 +2341,7 @@
         "description": "A 500kHz oscillator using a current-starved ring oscillator",
         "repo": "github.com/chipfoundry/sky130_ef_ip__rc_osc_500k",
         "author": "Tim Edwards",
-        "email": "tim@chipfoundry.io",
+        "email": "tim@efabless.com",
         "owner": "Efabless Corp.",
         "category": "analog",
         "technology": "sky130",
@@ -2409,7 +2409,7 @@
         "repo": "github.com/chipfoundry/EF_IPs",
         "owner": "Efabless Corp.",
         "author": "Marwan Abbas",
-        "email": "marwan.abbas@chipfoundry.io",
+        "email": "marwan.abbas@efabless.com",
         "category": "analog",
         "technology": "sky130",
         "license": "APACHE 2.0",
@@ -2514,7 +2514,7 @@
         "description": "High speed crystal oscillator",
         "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_16M",
         "author": "Tim Edwards",
-        "email": "tim@chipfoundry.io",
+        "email": "tim@efabless.com",
         "owner": "Efabless Corp.",
         "category": "analog",
         "technology": "sky130",
@@ -2564,7 +2564,7 @@
         "description": "Digital wrapper for high speed crystal oscillator",
         "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_16M_DI",
         "author": "Marwan Abbas",
-        "email": "marwan.abbas@chipfoundry.io",
+        "email": "marwan.abbas@efabless.com",
         "owner": "Efabless Corp.",
         "category": "analog",
         "technology": "sky130",
@@ -2648,7 +2648,7 @@
         "description": "Digital Locked Loop (ring oscillator + controller).",
         "repo": "github.com/chipfoundry/EF_dll_sky130",
         "author": "Tim Edwards",
-        "email": "tim@chipfoundry.io",
+        "email": "tim@efabless.com",
         "owner": "Efabless Corp.",
         "category": "digital",
         "technology": "sky130",
@@ -2699,7 +2699,7 @@
         "description": "All digital Clock and Reset Manager with on-chip crystal oscillators.",
         "repo": "github.com/chipfoundry/EF_CLK_RST_V2",
         "author": "Bassant Hassan",
-        "email": "bassant.hassan@chipfoundry.io",
+        "email": "bassant.hassan@efabless.com",
         "owner": "Efabless Corp.",
         "category": "digital",
         "technology": "sky130",
@@ -4182,7 +4182,7 @@
         "description": "Commercial 1024x3 SRAM",
         "repo": "github.com/chipfoundry/EF_SRAM_1024x32",
         "author": "Efabless Corp.",
-        "email": "purchase_ip@chipfoundry.io",
+        "email": "purchase_ip@efabless.com",
         "owner": "Efabless Corp.",
         "category": "digital",
         "technology": "sky130",
@@ -4504,7 +4504,7 @@
         "description": "An embedded FPGA.",
         "repo": "github.com/chipfoundry/EF_eFPGA",
         "author": "Efabless",
-        "email": "purchase_ip@chipfoundry.io",
+        "email": "purchase_ip@efabless.com",
         "owner": "Efabless Corp",
         "category": "digital",
         "technology": "sky130",
@@ -4537,7 +4537,7 @@
         "description": "Rail-Rail Dual Channel Voltage Comparator, Dual Power Supply.",
         "repo": "github.com/chipfoundry/EF_R2RVC02",
         "author": "Efabless",
-        "email": "purchase_ip@chipfoundry.io",
+        "email": "purchase_ip@efabless.com",
         "owner": "Efabless Corp",
         "category": "mixed",
         "technology": "sky130",
@@ -4570,15 +4570,13 @@
         "description": "10-Bit Rail-to- Rail Digital-Analog-Converter",
         "repo": "github.com/chipfoundry/EF_DACSCA1001",
         "author": "Efabless",
-        "email": "purchase_ip@chipfoundry.io",
+        "email": "purchase_ip@efabless.com",
         "owner": "Efabless Corp",
         "category": "mixed",
         "technology": "sky130",
         "license": "APACHE 2.0",
         "tags": [
-            "Digital",
-            "Analog",
-            "DAC"
+            "Digital Analog Converter"
         ],
         "release": {
             "v1.0.0": {
@@ -4601,6 +4599,34 @@
             }
         }
     },
+    "EF_IP_UTIL": {
+        "description": "A set of utilities that can be used to develop digital IPs in Verilog HDL",
+        "repo": "github.com/chipfoundry/EF_IP_UTIL",
+        "author": "Efabless Corp.",
+        "email": "ip_admin@chipfoundry.io",
+        "owner": "Efabless Corp.",
+        "category": "digital",
+        "technology": "n/a",
+        "license": "Apache 2.0",
+        "tags": [
+            "fifo",
+            "clock mux"
+        ],
+        "release": {
+            "v1.0.0": {
+                "date": "2025-1-9",
+                "bus": [],
+                "type": "soft",
+                "width": "0",
+                "height": "0",
+                "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": false,
+                "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
+            }
+        }
+    },
     "EF_ADC1008A": {
         "description": "ADC1008A IP",
         "repo": "github.com/chipfoundry/EF_ADC1008A",
@@ -4611,14 +4637,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "ADC",
-            "Analog"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4639,14 +4665,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "ADC",
-            "Analog"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4667,14 +4693,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "DLL",
-            "Clock"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4695,8 +4721,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "DMAC",
-            "AHBL"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4723,14 +4749,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "LDO",
-            "1.8V"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4779,8 +4805,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "SRAM",
-            "QSPI"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4807,14 +4833,14 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "SRAM",
-            "4KB"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4835,8 +4861,8 @@
         "technology": "n/a",
         "license": "Apache 2.0",
         "tags": [
-            "USB",
-            "CDC"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
@@ -4891,14 +4917,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "ADC",
-            "12bit"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4919,13 +4945,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "switches"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4946,14 +4973,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "comp",
-            "3V"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -4974,14 +5001,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "CDAC",
-            "12bit"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5002,13 +5029,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "opamp"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5029,14 +5057,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "por",
-            "power"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5057,14 +5085,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "rdac",
-            "3V"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5085,13 +5113,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "S/H"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
@@ -5112,14 +5141,14 @@
         "technology": "sky130",
         "license": "Apache 2.0",
         "tags": [
-            "por",
-            "power"
+            "fifo",
+            "clock mux"
         ],
         "release": {
             "v1.0.0": {
                 "date": "2025-1-9",
                 "bus": [],
-                "type": "hard",
+                "type": "soft",
                 "width": "0",
                 "height": "0",
                 "supply_voltage": [
