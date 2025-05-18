@@ -4601,34 +4601,6 @@
             }
         }
     },
-    "EF_IP_UTIL": {
-        "description": "A set of utilities that can be used to develop digital IPs in Verilog HDL",
-        "repo": "github.com/chipfoundry/EF_IP_UTIL",
-        "author": "Efabless Corp.",
-        "email": "ip_admin@chipfoundry.io",
-        "owner": "Efabless Corp.",
-        "category": "digital",
-        "technology": "n/a",
-        "license": "Apache 2.0",
-        "tags": [
-            "fifo",
-            "clock mux"
-        ],
-        "release": {
-            "v1.0.0": {
-                "date": "2025-1-9",
-                "bus": [],
-                "type": "soft",
-                "width": "0",
-                "height": "0",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": false,
-                "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
-            }
-        }
-    },
     "EF_ADC1008A": {
         "description": "ADC1008A IP",
         "repo": "github.com/chipfoundry/EF_ADC1008A",
@@ -4756,6 +4728,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4840,6 +4813,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4923,6 +4897,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4951,6 +4926,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -4979,6 +4955,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5007,6 +4984,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5035,6 +5013,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5063,6 +5042,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5091,6 +5071,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5119,6 +5100,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5147,6 +5129,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "hard",
@@ -5175,6 +5158,7 @@
         ],
         "release": {
             "v1.0.0": {
+                "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
