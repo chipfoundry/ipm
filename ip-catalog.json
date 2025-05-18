@@ -4562,7 +4562,7 @@
                 "type": "hard",
                 "width": "0.365",
                 "height": "0.168",
-                "cell_count": "0",
+                "cell_count": "n/a",
                 "clock_freq_mhz": "n/a",
                 "supply_voltage": [
                     "3.3",
@@ -5143,7 +5143,7 @@
                 "type": "hard",
                 "width": "0",
                 "height": "0",
-                "cell_count": "n/a",
+                "cell_count": "0",
                 "clock_freq_mhz": "n/a",
                "supply_voltage": [
                     "n/a"
