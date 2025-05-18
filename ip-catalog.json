@@ -4784,7 +4784,7 @@
             "4KB"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4813,7 +4813,7 @@
             "CDC"
         ],
         "release": {
-            "v1.0.0": {
+            "v1.0.3": {
                 "date": "2025-1-9",
                 "bus": [],
                 "type": "soft",
@@ -4897,7 +4897,7 @@
             "3v"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4926,7 +4926,7 @@
             "3v"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4955,7 +4955,7 @@
             "3v"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -4984,7 +4984,7 @@
             "3v"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5013,7 +5013,7 @@
             "power"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5042,7 +5042,7 @@
             "3v"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5071,7 +5071,7 @@
             "hold"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5100,7 +5100,7 @@
             "power"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
@@ -5129,7 +5129,7 @@
             "clock mux"
         ],
         "release": {
-            "v1.0.0": {
+            "none": {
                 "maturity": "Implemented",
                 "date": "2025-1-9",
                 "bus": [],
