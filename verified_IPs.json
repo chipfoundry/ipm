@@ -80,6 +80,23 @@
                 ],
                 "draft": false,
                 "sha256": "374c1b8b2ea95c6c4894837b5fc2d10884f5295dafe794b9e211d66fce374632"
+            },
+            "v1.1.1": {
+                "date": "24-07-2025",
+                "maturity": "Integrated",
+                "bus": [
+                    "WB"
+                ],
+                "type": "hard",
+                "width": "387.87",
+                "height": "303.315",
+                "cell_count": "0",
+                "clock_freq_mhz": "0",
+                "supply_voltage": [
+                    "1.8"
+                ],
+                "draft": false,
+                "sha256": "04b824e89bbb18000466f31c9b41d9e030547f2c62dbbd984ec77d952b1149c2"
             }
         }
     },
@@ -113,6 +130,23 @@
                 ],
                 "draft": true,
                 "sha256": "5b977418cf4e5ffdde0b1ddba186af81d590e701834300f96c7e5976e1c3d879"
+            },
+            "v1.0.1": {
+                "date": "20-07-2025",
+                "maturity": "Integrated",
+                "bus": [
+                    "WB"
+                ],
+                "type": "hard",
+                "width": "720",
+                "height": "920",
+                "cell_count": "0",
+                "clock_freq_mhz": "0",
+                "supply_voltage": [
+                    "1.8"
+                ],
+                "draft": false,
+                "sha256": "9a78bc210330e5420b658abb6cb4d01a9e7a003d2992f180223971ab89dec6c6"
             }
         }
     },
@@ -289,9 +323,9 @@
             }
         }
     },
-    "EF_UART": {
+    "CF_UART": {
         "description": "UART with a programmable baud rate generator and RX/TX FIFOs",
-        "repo": "github.com/chipfoundry/EF_UART",
+        "repo": "github.com/chipfoundry/CF_UART",
         "author": "Efabless Corp.",
         "email": "ip-admin@chipfoundry.io",
         "owner": "Efabless Corp.",
@@ -506,6 +540,23 @@
                 ],
                 "draft": true,
                 "sha256": "7ad01219548c1b0ca70cd83d023f81e9d3cfd4e43ca4c219e3672bc7939f56d8"
+            },
+            "v2.0.0": {
+                "date": "07-27-2025",
+                "maturity": "verified",
+                "bus": [
+                    "generic"
+                ],
+                "type": "soft",
+                "width": "0.0",
+                "height": "0.0",
+                "cell_count": "1590",
+                "clock_freq_mhz": "277",
+                "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": true,
+                "sha256": "274daf85bb15ff73170e749a602e17f55a93c331f170a438c04a8cbc7778652f"
             }
         }
     },
@@ -3880,9 +3931,9 @@
             }
         }
     },
-    "EF_SPI": {
+    "CF_SPI": {
         "description": "SPI master controller with receive and transmit FIFOs.",
-        "repo": "github.com/chipfoundry/EF_SPI",
+        "repo": "github.com/chipfoundry/CF_SPI",
         "author": "Efabless Corp.",
         "email": "ip-admin@chipfoundry.io",
         "owner": "Efabless Corp",
@@ -4115,6 +4166,23 @@
                 ],
                 "draft": true,
                 "sha256": "87b0f284b7b78b1bf3daefe1abc13f21825479e9b0aa13689fe5f565ddf2f3c0"
+            },
+            "v2.0.0": {
+                "date": "27-07-2025",
+                "maturity": "Integrated",
+                "bus": [
+                    "generic"
+                ],
+                "type": "soft",
+                "width": "0.0",
+                "height": "0.0",
+                "cell_count": "0",
+                "clock_freq_mhz": "0",
+                "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": true,
+                "sha256": "8d7ec9577fb1aeb5da389e86c28d7fa0d998df8fb4167493c6e54bf515720bac"
             }
         }
     },
@@ -5062,6 +5130,36 @@
                 ],
                 "draft": true,
                 "sha256": "7d95ec78d9f8090782cd65fd623d10a74c2dbabd17ab8b0aa92f3f80d1598149"
+            }
+        }
+    },
+    "EF_IP_UTIL": {
+        "description": "IP utility",
+        "repo": "github.com/chipfoundry/EF_IP_UTIL",
+        "author": "Efabless Corp.",
+        "email": "ip-admin@chipfoundry.io",
+        "owner": "Efabless Corp.",
+        "category": "digital",
+        "technology": "",
+        "license": "Apache 2.0",
+        "tags": [
+            "utility"
+        ],
+        "release": {
+            "v1.0.0": {
+                "maturity": "Implemented",
+                "date": "2025-27-7",
+                "bus": [],
+                "type": "soft",
+                "width": "0",
+                "height": "0",
+                "cell_count": "n/a",
+                "clock_freq_mhz": "n/a",
+                "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": true,
+                "sha256": "46040f55df14827f21fc9ffd511444c3510cf5c8348e004350c49485a0e6e85c"
             }
         }
     }
