@@ -32,7 +32,7 @@ from .manage import (
 
 @click.group(
     cls=DefaultGroup,
-    default="output",
+    default="ls-remote",
     default_if_no_args=True,
 )
 @click.version_option(__version__)

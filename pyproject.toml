@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cf-ipm"
-version = "1.2.3"
+version = "1.2.4"
 description = "Package manager for Open Source ASIC IPs"
 authors = ["ChipFoundry <marwan.abbas@chipfoundry.io>"]
 readme = "README.md"

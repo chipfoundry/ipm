@@ -24,7 +24,7 @@ import pathlib
 import requests
 import subprocess
 from dataclasses import dataclass
-from typing import Callable, ClassVar, Dict, Iterable, Optional, Tuple
+from typing import Callable, ClassVar, Dict, Iterable, List, Optional, Tuple
 
 import ssl
 import click
@@ -484,6 +484,63 @@ class IPRoot:
             if element not in deps_by_name:
                 os.remove(path)
 
+    def update_paths_with_error_handling(
+        self,
+        dependency_dict: Optional[dict] = None,
+        include_drafts=False,
+        local_file=None
+    ) -> List[Tuple[str, str]]:
+        """
+        Updates the paths of this IP root based on the dependency object, but
+        skips errors and returns a list of failed IPs with their error messages.
+
+        Args:
+            dependency_dict (dict | None): An optional override for ``dependencies.json``
+            include_drafts (bool): Whether to include draft versions
+            local_file (str): Path to local verified_IPs.json
+
+        Returns:
+            List[Tuple[str, str]]: List of (ip_name, error_message) tuples for failed installations
+        """
+        if dependency_dict is None:
+            dependency_dict = self.get_dependencies_object()
+        
+        failed_ips = []
+        successful_ips = []
+        
+        # Process each IP individually to catch errors
+        for dep in dependency_dict["IP"]:
+            for dep_name, dep_version in dep.items():
+                try:
+                    logger = Logger()
+                    logger.print_info(f"* Installing [cyan]{dep_name}@{dep_version}[/cyan]...")
+                    
+                    # Find and install the IP
+                    dependency = IP.find_verified_ip(
+                        dep_name, dep_version, self.ipm_root, self.path, include_drafts, local_file
+                    )
+                    self._install_ip(dependency, 0)
+                    successful_ips.append(dep_name)
+                    logger.print_success(f"* Successfully installed {dep_name}@{dep_version}")
+                    
+                except Exception as e:
+                    error_msg = str(e)
+                    failed_ips.append((dep_name, error_msg))
+                    logger.print_err(f"* Failed to install {dep_name}@{dep_version}: {error_msg}")
+                    continue
+        
+        # Clean up symlinks for IPs that are no longer in dependencies
+        deps_by_name = set(successful_ips)
+        for element, path in self._get_symlinked_ips():
+            if element not in deps_by_name:
+                try:
+                    os.remove(path)
+                except Exception as e:
+                    logger = Logger()
+                    logger.print_warn(f"* Warning: Could not remove symlink {path}: {e}")
+        
+        return failed_ips
+
     def _install_ip(self, ip: "IP", depth: int = 0):
         ip.install(depth)
         path_in_ip_root = os.path.join(self.path, ip.ip_name)
@@ -850,8 +907,8 @@ class IP:
                         raise RuntimeError(
                             f"Hash mismatch for {self.full_name}'s download:\n"
                             + f"\tURL:       {release_url}\n"
-                            + f"\tExpecting: {self.sha256}\n"
-                            + f"\tGot:       {sha256}"
+                            + f"\Got: {self.sha256}\n"
+                            + f"\Expecting:       {sha256}"
                         )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
@@ -859,7 +916,9 @@ class IP:
                 tf.extractall(dest_path)
         except Exception as e:
             d.cleanup()
-            shutil.rmtree(os.path.dirname(dest_path), ignore_errors=True)
+            # Only remove the specific IP directory that was being created, not the entire parent directory
+            if os.path.exists(dest_path):
+                shutil.rmtree(dest_path, ignore_errors=True)
             raise e from None
 
     # def generate_bus_wrapper(self, verified_ip_info):
@@ -1205,7 +1264,37 @@ def install_using_dep_file(ip_root, ipm_root, include_drafts=False, local_file=N
 
     try:
         if os.path.exists(root.dependencies_path):
-            root.update_paths(include_drafts=include_drafts, local_file=local_file)
+            failed_ips = root.update_paths_with_error_handling(include_drafts=include_drafts, local_file=local_file)
+            if failed_ips:
+                logger.print_warn(f"\n📊 Installation Summary:")
+                logger.print_success(f"✅ Successfully installed: {len(root.get_dependencies_object()['IP']) - len(failed_ips)} IP(s)")
+                logger.print_err(f"❌ Failed to install: {len(failed_ips)} IP(s)")
+                
+                # Group errors by type for cleaner display
+                error_types = {}
+                for ip_name, error_msg in failed_ips:
+                    # Extract the common error pattern (everything after "Version" and before "not found")
+                    if "Version" in error_msg and "not found in IP index" in error_msg:
+                        error_type = "Version not found in IP index"
+                    else:
+                        error_type = error_msg.strip()
+                    
+                    if error_type not in error_types:
+                        error_types[error_type] = []
+                    error_types[error_type].append(ip_name)
+                
+                # Show grouped errors
+                for error_type, ips in error_types.items():
+                    if len(ips) == 1:
+                        logger.print_err(f"  • {ips[0]}: {error_type}")
+                    else:
+                        # For multiple IPs with same error, show just the count and first few examples
+                        if len(ips) <= 5:
+                            logger.print_err(f"  • {error_type} ({len(ips)} IPs): {', '.join(ips)}")
+                        else:
+                            logger.print_err(f"  • {error_type} ({len(ips)} IPs): {', '.join(ips[:3])}... and {len(ips)-3} more")
+            else:
+                logger.print_success(f"\n🎉 Successfully installed all {len(root.get_dependencies_object()['IP'])} IP(s)")
         else:
             raise RuntimeError(f"{root.dependencies_path} not found.")
     except RuntimeError as e:
