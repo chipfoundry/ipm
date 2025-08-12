@@ -4788,5 +4788,41 @@
                 "sha256": "b9d23c1ec99ae9ba1a772b29d46b5e25b3bfdedcc13c088fb63c671bd444e5f2"
             }
         }
+    },
+    "Neuromorphic_X1_32x32": {
+        "description": "Commercial 32x32 1T1R Analog In-Memory Compute Macro",
+        "repo": "github.com/BMsemi/Neuromorphic_X1_main",
+        "author": "BM LABS",
+        "email": "samarthjain@bmsemi.org",
+        "owner": "BM LABS",
+        "category": "analog",
+        "technology": "sky130",
+        "license": "Apache 2.0",
+        "tags": [
+            "neuromorphic",
+            "AiMC",
+            "1T1R",
+            "in-memory-compute",
+            "low-power"
+        ],
+        "release": {
+            "v1.0.0": {
+                "maturity": "Verified",
+                "date": "12-08-2025",
+                "bus": [
+                    "WB"
+                ],
+                "type": "hard",
+                "width": "760",
+                "height": "948",
+                "cell_count": "n/a",
+                "clock_freq_mhz": "n/a",
+                "supply_voltage": [
+                    "1.8"
+                ],
+                "draft": true,
+                "sha256": "afeedd515ef505c4677f84be6b8a8b4dcf819e338f605aca5a2a5861f3f25a58"
+            }
+        }
     }
 }
