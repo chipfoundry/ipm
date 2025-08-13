@@ -508,26 +508,49 @@ class IPRoot:
         failed_ips = []
         successful_ips = []
         
-        # Process each IP individually to catch errors
-        for dep in dependency_dict["IP"]:
-            for dep_name, dep_version in dep.items():
-                try:
-                    logger = Logger()
-                    logger.print_info(f"* Installing [cyan]{dep_name}@{dep_version}[/cyan]...")
-                    
-                    # Find and install the IP
-                    dependency = IP.find_verified_ip(
-                        dep_name, dep_version, self.ipm_root, self.path, include_drafts, local_file
-                    )
-                    self._install_ip(dependency, 0)
-                    successful_ips.append(dep_name)
-                    logger.print_success(f"* Successfully installed {dep_name}@{dep_version}")
-                    
-                except Exception as e:
-                    error_msg = str(e)
-                    failed_ips.append((dep_name, error_msg))
-                    logger.print_err(f"* Failed to install {dep_name}@{dep_version}: {error_msg}")
-                    continue
+        try:
+            # Use the existing _resolve_dependencies method to handle nested dependencies
+            logger = Logger()
+            logger.print_info("* Resolving dependencies recursively...")
+            
+            # This will install all dependencies including nested ones
+            resolved_deps = self._resolve_dependencies(
+                self.dependencies_path,
+                dependency_dict,
+                include_drafts=include_drafts,
+                local_file=local_file
+            )
+            
+            # Track successful installations
+            for dep in resolved_deps:
+                successful_ips.append(dep.ip_name)
+                logger.print_success(f"* Successfully installed {dep.full_name}")
+            
+        except Exception as e:
+            # If _resolve_dependencies fails, fall back to individual installation
+            logger = Logger()
+            logger.print_warn(f"* Recursive dependency resolution failed: {e}")
+            logger.print_info("* Falling back to individual dependency installation...")
+            
+            # Process each IP individually to catch errors
+            for dep in dependency_dict["IP"]:
+                for dep_name, dep_version in dep.items():
+                    try:
+                        logger.print_info(f"* Installing [cyan]{dep_name}@{dep_version}[/cyan]...")
+                        
+                        # Find and install the IP
+                        dependency = IP.find_verified_ip(
+                            dep_name, dep_version, self.ipm_root, self.path, include_drafts, local_file
+                        )
+                        self._install_ip(dependency, 0)
+                        successful_ips.append(dep_name)
+                        logger.print_success(f"* Successfully installed {dep_name}@{dep_version}")
+                        
+                    except Exception as e:
+                        error_msg = str(e)
+                        failed_ips.append((dep_name, error_msg))
+                        logger.print_err(f"* Failed to install {dep_name}@{dep_version}: {error_msg}")
+                        continue
         
         # Clean up symlinks for IPs that are no longer in dependencies
         deps_by_name = set(successful_ips)
@@ -907,8 +930,8 @@ class IP:
                         raise RuntimeError(
                             f"Hash mismatch for {self.full_name}'s download:\n"
                             + f"\tURL:       {release_url}\n"
-                            + f"\Got: {self.sha256}\n"
-                            + f"\Expecting:       {sha256}"
+                            + f"\tGot:        {self.sha256}\n"
+                            + f"\tExpecting:  {sha256}"
                         )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
