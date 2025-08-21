@@ -4808,7 +4808,7 @@
     },
     "Neuromorphic_X1_32x32": {
         "description": "Commercial 32x32 1T1R Analog In-Memory Compute Macro",
-        "repo": "github.com/BMsemi/Neuromorphic_X1_main",
+        "repo": "github.com/chipfoundry/Neuromorphic_X1_main",
         "author": "BM LABS",
         "email": "samarthjain@bmsemi.org",
         "owner": "BM LABS",
@@ -4838,7 +4838,7 @@
                     "1.8"
                 ],
                 "draft": true,
-                "sha256": "afeedd515ef505c4677f84be6b8a8b4dcf819e338f605aca5a2a5861f3f25a58"
+                "sha256": "5acca119c14ca54d668da196cc91a716fcd9c1987823b5367b3076fd2036db8f"
             }
         }
     }
