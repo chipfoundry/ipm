@@ -4856,6 +4856,23 @@
                 ],
                 "draft": false,
                 "sha256": "5acca119c14ca54d668da196cc91a716fcd9c1987823b5367b3076fd2036db8f"
+            },
+            "v1.1.0": {
+                "maturity": "Verified",
+                "date": "08-09-2025",
+                "bus": [
+                    "WB"
+                ],
+                "type": "hard",
+                "width": "760",
+                "height": "948",
+                "cell_count": "n/a",
+                "clock_freq_mhz": "n/a",
+                "supply_voltage": [
+                    "1.8"
+                ],
+                "draft": false,
+                "sha256": "eaf7ea66f70a0a82f8516fe358f2a33b76ba1733f7569869f3c5633d76489d27"
             }
         }
     }
