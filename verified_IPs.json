@@ -129,8 +129,8 @@
                 "supply_voltage": [
                     "1.8"
                 ],
-                "draft": true,
-                "sha256": "e32f4b027df25c30060e9b77cdc3ac4fee64c0d4ef6bf4380909ef31302e0332"
+                "draft": false,
+                "sha256": "8d14f7d65c82922d5f743ffffe6cb631ccf6caa266e0598018f7bc820ba7ffa2"
             }
         }
     },
