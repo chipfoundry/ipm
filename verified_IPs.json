@@ -2800,7 +2800,7 @@
                 "supply_voltage": [
                     "n/a"
                 ],
-                "draft": true,
+                "draft": false,
                 "sha256": "48745ad278f7bafe7777306e85e5d1bfd2cfc6e2471339ab72ce67edae7011b3"
             }
         }
@@ -2955,7 +2955,7 @@
                 "supply_voltage": [
                     "n/a"
                 ],
-                "draft": true,
+                "draft": false,
                 "sha256": "cc0a7dde2631b7c905627846181749bac1649a7e38f7c66fb963404ca66d54d4"
             }
         }
@@ -2992,7 +2992,7 @@
                 "supply_voltage": [
                     "n/a"
                 ],
-                "draft": true,
+                "draft": false,
                 "sha256": "1fc38a9ecdc7540237d90e2d4deb7f2f165fd9ee189d4026ee43ccf110ff6a7c"
             }
         }
