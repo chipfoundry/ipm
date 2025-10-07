@@ -2960,12 +2960,12 @@
             }
         }
     },
-    "EF_TMR32": {
+    "CF_TMR32": {
         "description": "A 32-bit timer and PWM generator",
-        "repo": "github.com/chipfoundry/EF_TMR32",
+        "repo": "github.com/chipfoundry/CF_TMR32",
         "author": "Efabless Corp.",
         "email": "ip-admin@chipfoundry.io",
-        "owner": "Efabless Corp",
+        "owner": "ChipFoundry, a DBA of Umbralogic Technologies LLC",
         "category": "digital",
         "technology": "n/a",
         "license": "APACHE 2.0",
@@ -2978,144 +2978,8 @@
             "periodic"
         ],
         "release": {
-            "v1.0.0": {
-                "date": "15-04-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "4a1a007d5c9b7a708d873c381af038cd21ffde416e0fd0fc3799fb153e828972"
-            },
-            "v1.0.1": {
-                "date": "07-05-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "74c936849bee2b74f60f3cc59896608699ee6b0ada9078cf14032ce434f0fbd3"
-            },
-            "v1.0.2": {
-                "date": "12-05-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "0f798302337f2ec0ebcf36c90bf4c47e288c79ec319693a614143980b3bf9384"
-            },
-            "v1.0.3": {
-                "date": "19-05-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "f5ad43edfbe5dcda26835e076587009173c227d34f9f267c744c3c26b32de34d"
-            },
-            "v1.0.4": {
-                "date": "27-05-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "99511f2fdd9c1d0870745448539ab9eb68034949831f1685312e9632da3452f7"
-            },
-            "v1.0.5": {
-                "date": "27-06-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "1c049aefbb5d8baef9da62794b9179c8492599598796f0afe6df27521eff5eb7"
-            },
-            "v1.0.6": {
-                "date": "08-07-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "c2a9a0d7ce689b22de02a58e68a9ab17537bedc005b6573ebf04e167bb7a7862"
-            },
-            "v1.0.7": {
-                "date": "08-07-2024",
-                "maturity": "Implemented",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "d70b6e633d14ea5aa4f5413eb8828de88c5b15b127b435a3902323e0fd7a0446"
-            },
-            "v1.0.8": {
-                "date": "08-07-2024",
+            "v2.0.0": {
+                "date": "10-07-2025",
                 "maturity": "Integrated",
                 "bus": [
                     "generic"
@@ -3129,75 +2993,7 @@
                     "n/a"
                 ],
                 "draft": true,
-                "sha256": "a2e28b8f48c2238381753b2df7b34808887d26844af5d1bf5d69195ab9486995"
-            },
-            "v1.0.9": {
-                "date": "17-09-2024",
-                "maturity": "Integrated",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "398f069a8c39a9d07c0171db015daf932c521009584cb81d77a025713ef88a2d"
-            },
-            "v1.0.10": {
-                "date": "8-10-2024",
-                "maturity": "Integrated",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "0ae18f31c35424aaa36b9b4d9576fa7cef69543623caa49f291ef2cb912316fe"
-            },
-            "v1.0.11": {
-                "date": "4-11-2024",
-                "maturity": "Integrated",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "5e5044b5137ae383b21f14228dd51a444f11893406ea40d0f1f48634a99255d2"
-            },
-            "v1.1.0": {
-                "date": "23-01-2025",
-                "maturity": "Integrated",
-                "bus": [
-                    "generic"
-                ],
-                "type": "soft",
-                "width": "0.0",
-                "height": "0.0",
-                "cell_count": "797",
-                "clock_freq_mhz": "163",
-                "supply_voltage": [
-                    "n/a"
-                ],
-                "draft": true,
-                "sha256": "3372c8b613c50a29f9dd68267578fd24a205ce233a64dded9e6d6b0c08c16f88"
+                "sha256": "1fc38a9ecdc7540237d90e2d4deb7f2f165fd9ee189d4026ee43ccf110ff6a7c"
             }
         }
     },
