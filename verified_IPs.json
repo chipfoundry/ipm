@@ -297,7 +297,6 @@
                 "supply_voltage": [
                     "1.8"
                 ],
-                "draft": true,
                 "sha256": "5083b77481e6bca36695c0ec9aa9740e5999f55eb112c08bac02cc20217c6fc7"
             }
         }
