@@ -290,8 +290,8 @@
                     "WB"
                 ],
                 "type": "hard",
-                "width": "",
-                "height": "",
+                "width": "1450",
+                "height": "920",
                 "cell_count": "0",
                 "clock_freq_mhz": "0",
                 "supply_voltage": [
