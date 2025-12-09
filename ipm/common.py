@@ -858,6 +858,22 @@ class IP:
         else:
             logger.print_err("No IPs found")
 
+    def _remove_apple_double_files(self, directory):
+        """Remove macOS AppleDouble files (._*) from a directory tree.
+        
+        Args:
+            directory (str): Path to the directory to clean
+        """
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file.startswith("._"):
+                    file_path = os.path.join(root, file)
+                    try:
+                        os.remove(file_path)
+                    except OSError:
+                        # Ignore errors if file is already removed or inaccessible
+                        pass
+
     def download_tarball(self, dest_path, no_verify_hash=False):
         """downloads the release tarball
 
@@ -937,6 +953,8 @@ class IP:
             with tarfile.open(tgz_path, mode="r:gz") as tf:
                 r.raise_for_status()
                 tf.extractall(dest_path)
+                # Remove macOS AppleDouble files (._*) that may be created during extraction
+                self._remove_apple_double_files(dest_path)
         except Exception as e:
             d.cleanup()
             # Only remove the specific IP directory that was being created, not the entire parent directory
