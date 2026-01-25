@@ -1,0 +1,527 @@
+{
+  "summary": {
+    "total_ips": 65,
+    "valid_ips": 0,
+    "invalid_ips": 65
+  },
+  "valid_ips": [],
+  "invalid_ips": [
+    {
+      "name": "EF_PSRAM_CTRL",
+      "repo": "github.com/chipfoundry/EF_PSRAM_CTRL",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "CF_SRAM_1024x32",
+      "repo": "github.com/chipfoundry/CF_SRAM_1024x32",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.1.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.1.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "CF_SRAM_4096x32",
+      "repo": "github.com/chipfoundry/CF_SRAM_4096x32",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.2",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "EF_PSRAM_CTRL_V2",
+      "repo": "github.com/chipfoundry/EF_PSRAM_CTRL_V2",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.2",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.3",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.4",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.5",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.6",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.7",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.8",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "CF_UART",
+      "repo": "github.com/chipfoundry/CF_UART",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v2.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v2.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "EF_PWM32",
+      "repo": "github.com/chipfoundry/EF_PWM32",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_TCC32",
+      "repo": "github.com/chipfoundry/EF_TCC32",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "MS_CLK_RST",
+      "repo": "github.com/chipfoundry/MS_CLK_RST",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_GPIO8",
+      "repo": "github.com/chipfoundry/EF_GPIO8",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_GPIO",
+      "repo": "github.com/chipfoundry/EF_GPIO",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "MS_SPI_XIP_CACHE",
+      "repo": "github.com/chipfoundry/MS_SPI_XIP_CACHE",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "MS_DMAC_AHBL",
+      "repo": "github.com/chipfoundry/MS_DMAC_AHBL",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_AES",
+      "repo": "github.com/chipfoundry/EF_AES",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "SW_AES",
+      "repo": "github.com/chipfoundry/SW_AES",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_SHA256",
+      "repo": "github.com/chipfoundry/EF_SHA256",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "SW_SHA256",
+      "repo": "github.com/chipfoundry/SW_SHA256",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_ACMP_DI",
+      "repo": "github.com/chipfoundry/EF_ACMP_DI",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_DAC1001_DI",
+      "repo": "github.com/chipfoundry/EF_DAC1001_DI",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_Q7_UNIT",
+      "repo": "github.com/chipfoundry/EF_Q7_UNIT",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_ADCS1008A",
+      "repo": "github.com/chipfoundry/EF_ADCS1008A",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "DFFRAM128x32",
+      "repo": "github.com/chipfoundry/OL-DFFRAM",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "DFFRAM256x32",
+      "repo": "github.com/chipfoundry/OL-DFFRAM",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.2",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "DFFRAM512x32",
+      "repo": "github.com/chipfoundry/OL-DFFRAM",
+      "issue": "No valid releases",
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        },
+        {
+          "version": "v1.0.1",
+          "release_issue": "Release not found",
+          "tarball_issue": "Tarball not found"
+        }
+      ]
+    },
+    {
+      "name": "EF_PIN_MUX",
+      "repo": "github.com/chipfoundry/EF_PIN_MUX",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_WDT32",
+      "repo": "github.com/chipfoundry/EF_WDT32",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "MS_WDT32",
+      "repo": "github.com/chipfoundry/MS_WDT32",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__xtal_osc_32k",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_32k",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__xtal_osc_32k_DI",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_32k_DI",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__rc_osc_500k",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__rc_osc_500k",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__rc_osc_500k_DI",
+      "repo": "github.com/chipfoundry/EF_IPs",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__xtal_osc_16M",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_16M",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "sky130_ef_ip__xtal_osc_16M_DI",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__xtal_osc_16M_DI",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_CLK_RST_V2",
+      "repo": "github.com/chipfoundry/EF_CLK_RST_V2",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "EF_I2S",
+      "repo": "github.com/chipfoundry/EF_I2S",
+      "issue": "Repository not found",
+      "message": "Repository not found"
+    },
+    {
+      "name": "usb_cdc",
+      "repo": "github.com/chipfoundry/usb_cdc",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "usb_cdc_wrapper",
+      "repo": "github.com/chipfoundry/usb_cdc_wrapper",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "I2C",
+      "repo": "github.com/chipfoundry/I2C",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_I2C",
+      "repo": "github.com/chipfoundry/EF_I2C",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_TMR32",
+      "repo": "github.com/chipfoundry/EF_TMR32",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "CF_SPI",
+      "repo": "github.com/chipfoundry/CF_SPI",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_SRAM_1024x32",
+      "repo": "github.com/chipfoundry/EF_SRAM_1024x32",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_QSPI_FLASH_WRITER",
+      "repo": "github.com/chipfoundry/EF_QSPI_FLASH_WRITER",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_QSPI_XIP_CTRL",
+      "repo": "github.com/chipfoundry/EF_QSPI_XIP_CTRL",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_eFPGA",
+      "repo": "github.com/chipfoundry/EF_eFPGA",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_R2RVC02",
+      "repo": "github.com/chipfoundry/EF_R2RVC02",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_ADCS1008NC",
+      "repo": "github.com/chipfoundry/EF_ADCS1008NC",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_DLL_SKY130",
+      "repo": "github.com/chipfoundry/EF_DLL_SKY130",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_DMAC_AHBL-OLD",
+      "repo": "github.com/chipfoundry/EF_DMAC_AHBL-OLD",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_LDOR1V8",
+      "repo": "github.com/chipfoundry/EF_LDOR1V8",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_QSPI_FLASH_CTRL",
+      "repo": "github.com/chipfoundry/EF_QSPI_FLASH_CTRL",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_SRAM_4096x8",
+      "repo": "github.com/chipfoundry/EF_SRAM_4096x8",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_USB_CDC_WRAPPER",
+      "repo": "github.com/chipfoundry/EF_USB_CDC_WRAPPER",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "EF_UVM",
+      "repo": "github.com/chipfoundry/EF_UVM",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__adc3v_12bit",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__adc3v_12bit",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__analog_switches",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__analog_switches",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__ccomp3v",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__ccomp3v",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__cdac3v_12bit",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__cdac3v_12bit",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__opamp",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__opamp",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__power_on_reset",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__power_on_reset",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__rdac3v_8bit",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__rdac3v_8bit",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__samplehold",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__samplehold",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__simple_por",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__simple_por",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "sky130_ef_ip__template",
+      "repo": "github.com/chipfoundry/sky130_ef_ip__template",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "CF_IP_UTIL",
+      "repo": "github.com/chipfoundry/CF_IP_UTIL",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    },
+    {
+      "name": "Neuromorphic_X1_32x32",
+      "repo": "github.com/BMsemi/Neuromorphic_X1_main",
+      "issue": "Repository not found",
+      "message": "GitHub API error: 403"
+    }
+  ]
+}

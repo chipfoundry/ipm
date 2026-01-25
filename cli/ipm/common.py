@@ -177,7 +177,7 @@ class IPInfo:
 
     @classmethod
     def get_verified_ip_info(Self, ip_name=None, include_drafts=False, local_file=None):
-        """Get IP info from remote or local verified backend.
+        """Get IP info from backend API or local verified backend.
 
         Args:
             ip_name (str, optional): Name of the IP. Defaults to None.
@@ -188,54 +188,97 @@ class IPInfo:
             dict: Info of the IP.
         """
         logger = Logger()
-        data = Self.cache
-
-        # Check for a local verified_IPs.json file
+        
+        # Check for a local verified_IPs.json file (fallback)
         if local_file and os.path.exists(local_file):
             logger.print_info(f"Using local verified_IPs.json at {local_file}")
             with open(local_file, "r") as f:
                 data = json.load(f)
-        else:
-            session = GitHubSession()
-            if data is None:
-                resp = session.get(VERIFIED_JSON_FILE_URL)
-                session.throw_status(resp, "download IP release index")
-                data = resp.json()
-                Self.cache = data
+                
+            if ip_name:
+                if ip_name in data:
+                    ip_info = data[ip_name]
+                    releases = ip_info.get("release", {})
 
-        if ip_name:
-            if ip_name in data:
-                ip_info = data[ip_name]
-                releases = ip_info.get("release", {})
+                    # Filter for non-draft releases if include_drafts is False
+                    if not include_drafts:
+                        releases = {
+                            version: info
+                            for version, info in releases.items()
+                            if not info.get("draft", False)
+                        }
 
-                # Filter for non-draft releases if include_drafts is False
-                if not include_drafts:
-                    releases = {
-                        version: info
-                        for version, info in releases.items()
-                        if not info.get("draft", False)
-                    }
-
-                return {**ip_info, "release": releases}
-            else:
-                logger.print_err(f"IP {ip_name} not found in the release list.")
-                exit(1)
-        else:
-            # When listing all IPs, filter out IPs with only draft releases if include_drafts is False
-            result = {}
-            for ip_name, ip_info in data.items():
-                releases = ip_info.get("release", {})
-                if not include_drafts:
-                    filtered_releases = {
-                        version: info
-                        for version, info in releases.items()
-                        if not info.get("draft", False)
-                    }
-                    if filtered_releases:
-                        result[ip_name] = {**ip_info, "release": filtered_releases}
+                    return {**ip_info, "release": releases}
                 else:
-                    result[ip_name] = ip_info
-            return result
+                    logger.print_err(f"IP {ip_name} not found in the release list.")
+                    exit(1)
+            else:
+                # When listing all IPs, filter out IPs with only draft releases if include_drafts is False
+                result = {}
+                for ip_name, ip_info in data.items():
+                    releases = ip_info.get("release", {})
+                    if not include_drafts:
+                        filtered_releases = {
+                            version: info
+                            for version, info in releases.items()
+                            if not info.get("draft", False)
+                        }
+                        if filtered_releases:
+                            result[ip_name] = {**ip_info, "release": filtered_releases}
+                    else:
+                        result[ip_name] = ip_info
+                return result
+        
+        # Use backend API
+        try:
+            if ip_name:
+                # Get specific IP info
+                api_url = f"http://127.0.0.1:8000/api/v1/ips/{ip_name}"
+                params = {"include_drafts": include_drafts}
+                
+                response = requests.get(api_url, params=params, timeout=30)
+                if response.status_code == 404:
+                    logger.print_err(f"IP {ip_name} not found in the backend.")
+                    exit(1)
+                response.raise_for_status()
+                
+                ip_data = response.json()
+                # Transform the data structure to match the expected format
+                # The backend returns 'releases' but the CLI expects 'release'
+                if "releases" in ip_data:
+                    ip_data["release"] = ip_data.pop("releases")
+                
+                return ip_data
+            else:
+                # Get all IPs
+                api_url = "http://127.0.0.1:8000/api/v1/ips"
+                params = {"include_drafts": include_drafts}
+                
+                response = requests.get(api_url, params=params, timeout=30)
+                response.raise_for_status()
+                
+                api_data = response.json()
+                ips_data = api_data.get("ips", [])
+                
+                # Transform the data structure to match the expected format
+                result = {}
+                for ip_data in ips_data:
+                    ip_name = ip_data.get("_id") or ip_data.get("name")
+                    if ip_name:
+                        # Transform 'releases' to 'release' for compatibility
+                        if "releases" in ip_data:
+                            ip_data["release"] = ip_data.pop("releases")
+                        result[ip_name] = ip_data
+                
+                return result
+                
+        except requests.exceptions.ConnectionError:
+            logger.print_err("Failed to connect to backend API at http://127.0.0.1:8000")
+            logger.print_err("Please ensure the backend service is running.")
+            exit(1)
+        except requests.exceptions.RequestException as e:
+            logger.print_err(f"API request failed: {e}")
+            exit(1)
 
     @staticmethod
     def get_installed_ips(ip_root):
@@ -869,51 +912,45 @@ class IP:
         d = tempfile.TemporaryDirectory()
         tgz_path = os.path.join(d.name, "asset.tar.gz")
         try:
-            session = GitHubSession()
-
-            releases = []
-            last_response = [{}]
-            page = 1
-            while len(last_response) != 0:
-                params = {"per_page": 100, "page": page}
-                release_url = f"https://api.github.com/repos/{self.repo}/releases"
-                response = session.get(
-                    release_url,
-                    params=params,
-                )
-                session.throw_status(response, "download IP releases")
-                last_response = response.json()
-                releases += last_response
-                page += 1
-
-            asset_id = None
-            for release in releases:
-                if self.ip_name in release["tarball_url"].split("/")[-1]:
-                    for assets in release["assets"]:
-                        for asset_name, asset_value in assets.items():
-                            if (
-                                asset_name == "name"
-                                and asset_value == f"{self.version}.tar.gz"
-                            ):
-                                asset_id = assets["id"]
-            if asset_id is None:
+            # First, get the download URL and SHA256 from the backend API
+            api_url = f"http://127.0.0.1:8000/api/v1/ips/{self.ip_name}/{self.version}/download"
+            
+            try:
+                response = requests.get(api_url, timeout=30)
+                if response.status_code == 404:
+                    raise RuntimeError(
+                        f"IP {self.ip_name}@{self.version} not found in the backend"
+                    )
+                response.raise_for_status()
+                
+                download_info = response.json()
+                download_url = download_info.get("url")
+                api_sha256 = download_info.get("sha256")
+                
+                if not download_url:
+                    raise RuntimeError(f"No download URL returned from backend for {self.full_name}")
+                
+                # Update the SHA256 from the API response
+                if api_sha256:
+                    self.sha256 = api_sha256
+                
+            except requests.exceptions.ConnectionError:
                 raise RuntimeError(
-                    f"IP {self.ip_name}@{self.version} not found in the releases of repo {self.repo}"
+                    "Failed to connect to backend API. Please ensure the backend service is running."
                 )
+            except requests.exceptions.RequestException as e:
+                raise RuntimeError(f"Failed to get download info from backend: {e}")
 
-            release_url = (
-                f"https://api.github.com/repos/{self.repo}/releases/assets/{asset_id}"
-            )
-
-            with session.stream(
-                "GET",
-                release_url,
-                headers={
-                    "Accept": "application/octet-stream",
-                },
-            ) as r, open(tgz_path, "wb") as tgz:
-                session.throw_status(r, "download the release tarball")
-                for chunk in r.iter_bytes(chunk_size=8192):
+            # Download the tarball using the URL from the backend
+            logger = Logger()
+            logger.print_info(f"Downloading {self.full_name} from {download_url}")
+            
+            # Use requests to download the file
+            download_response = requests.get(download_url, stream=True, timeout=30)
+            download_response.raise_for_status()
+            
+            with open(tgz_path, "wb") as tgz:
+                for chunk in download_response.iter_content(chunk_size=8192):
                     tgz.write(chunk)
 
             if not no_verify_hash:
@@ -922,21 +959,21 @@ class IP:
                     if self.sha256 is None:
                         raise RuntimeError(
                             f"Refusing to unpack tarball for {self.full_name}: Missing 'sha256' field in release\n"
-                            + f"\tURL:       {release_url}\n"
+                            + f"\tURL:       {download_url}\n"
                             + f"\tGot:       {sha256}\n"
                             + "\tPlease submit an issue to the IPM repository."
                         )
                     else:
                         raise RuntimeError(
-                            f"Hash mismatch for {self.full_name}'s download:\n"
-                            + f"\tURL:       {release_url}\n"
-                            + f"\tGot:        {self.sha256}\n"
-                            + f"\tExpecting:  {sha256}"
+                            f"Refusing to unpack tarball for {self.full_name}: Hash mismatch\n"
+                            + f"\tURL:       {download_url}\n"
+                            + f"\tGot:        {sha256}\n"
+                            + f"\tExpecting:  {self.sha256}"
                         )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
-                r.raise_for_status()
                 tf.extractall(dest_path)
+                
         except Exception as e:
             d.cleanup()
             # Only remove the specific IP directory that was being created, not the entire parent directory

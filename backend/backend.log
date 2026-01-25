@@ -1,0 +1,16 @@
+/Users/marwan/chipfoundry/ipm-platform/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [61249]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61419 - "GET /api/v1/ips/CF_SRAM_1024x32/v1.1.1/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61432 - "GET /api/v1/ips/CF_SRAM_1024x32?include_drafts=False HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61433 - "GET /api/v1/ips/CF_SRAM_1024x32?include_drafts=False HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61434 - "GET /api/v1/ips/CF_SRAM_1024x32/v1.1.1/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61479 - "GET /api/v1/ips?include_drafts=False HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61249]
