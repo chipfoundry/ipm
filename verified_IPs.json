@@ -4227,5 +4227,37 @@
                 "sha256": "eaf7ea66f70a0a82f8516fe358f2a33b76ba1733f7569869f3c5633d76489d27"
             }
         }
+    },
+    "CF_gpio_config": {
+        "description": "OpenFrame GPIO configuration IP",
+        "repo": "github.com/chipfoundry/CF_gpio_config",
+        "author": "ChipFoundry",
+        "email": "ip-admin@chipfoundry.io",
+        "owner": "ChipFoundry",
+        "category": "digital",
+        "technology": "sky130",
+        "license": "Apache 2.0",
+        "tags": [
+            "GPIO"
+        ],
+        "release": {
+            "v1.0.0": {
+                "maturity": "Verified",
+                "date": "2026-09-02",
+                "bus": [
+                    ""
+                ],
+                "type": "soft",
+                "width": "n/a",
+                "height": "n/a",
+                "cell_count": "n/a",
+                "clock_freq_mhz": "n/a",
+                "supply_voltage": [
+                    "n/a"
+                ],
+                "draft": true,
+                "sha256": "f3eeda996c9cde6bbbbda77555281fe32051b874353d6d9ff3a319fff98137bb"
+            }
+        }
     }
 }
