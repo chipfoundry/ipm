@@ -4272,7 +4272,7 @@
                 "supply_voltage": [
                     "n/a"
                 ],
-                "draft": true,
+                "draft": false,
                 "sha256": "16c8c06d0bcf7dcb470c64bd115fae649a5d7fdf69235cd6a4ccee3ab6c98f00"
             }
         }
