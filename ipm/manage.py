@@ -16,6 +16,7 @@ import os
 import click
 
 from .common import (
+    IPInfo,
     check_ip_root_dir,
     check_ipm_directory,
     install_ip,
@@ -42,9 +43,12 @@ from .common import (
     default=os.path.join(os.getcwd(), "ip"),
     help="IP installation path",
 )
+@click.option("--test", "use_test", is_flag=True, hidden=True, help="Use dev environment")
 @opt_ipm_root
-def install_cmd(ip, ip_root, ipm_root=None, version=None, include_drafts=False, local_file=None):
+def install_cmd(ip, ip_root, ipm_root=None, version=None, include_drafts=False, local_file=None, use_test=False):
     """Install one of the verified IPs locally."""
+    if use_test:
+        IPInfo.use_test = True
     install(ip, ipm_root, version=version, ip_root=ip_root, include_drafts=include_drafts, local_file=local_file)
 
 
@@ -121,8 +125,11 @@ def uninstall(
     required=False,
     help="Path to local verified_IPs.json file",
 )
-def ls_remote_cmd(category, technology, include_drafts, local_file):
+@click.option("--test", "use_test", is_flag=True, hidden=True, help="Use dev environment")
+def ls_remote_cmd(category, technology, include_drafts, local_file, use_test):
     """Lists all verified IPs in ipm's database"""
+    if use_test:
+        IPInfo.use_test = True
     ls_remote(category, technology, include_drafts, local_file)
 
 
