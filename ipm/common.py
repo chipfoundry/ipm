@@ -43,6 +43,7 @@ VERIFIED_JSON_FILE_URL = (
     "https://raw.githubusercontent.com/chipfoundry/ipm-platform/refs/heads/main/verified_IPs.json"
 )
 PLATFORM_CATALOG_URL = "https://api.chipfoundry.io/api/v1/catalog/ipm"
+PLATFORM_CATALOG_URL_DEV = "https://dev-api.chipfoundry.io/api/v1/catalog/ipm"
 DEPENDENCIES_FILE_NAME = "dependencies.json"
 IPM_DEFAULT_HOME = os.path.join(os.path.expanduser("~"), ".ipm")
 CF_CLI_CONFIG_PATH = os.path.join(os.path.expanduser("~"), ".chipfoundry-cli", "config.toml")
@@ -176,6 +177,7 @@ class Logger:
 
 class IPInfo:
     cache: ClassVar[Optional[dict]] = None
+    use_test: ClassVar[bool] = False
 
     @staticmethod
     def _parse_toml_simple(path):
@@ -196,13 +198,13 @@ class IPInfo:
         return cfg
 
     @staticmethod
-    def _load_platform_config():
-        """Load API URL and key from cf-cli config or environment.
+    def _load_platform_config(use_test=False):
+        """Load API URL and key from cf-cli config.
 
         The catalog endpoint is public so we always default to the platform URL.
         An API key is optional but included if present.
         """
-        api_url = os.getenv("IPM_API_URL") or PLATFORM_CATALOG_URL
+        api_url = PLATFORM_CATALOG_URL_DEV if use_test else PLATFORM_CATALOG_URL
         api_key = None
 
         if os.path.exists(CF_CLI_CONFIG_PATH):
@@ -267,7 +269,7 @@ class IPInfo:
                 data = json.load(f)
         else:
             if data is None:
-                api_url, api_key = Self._load_platform_config()
+                api_url, api_key = Self._load_platform_config(use_test=Self.use_test)
                 if api_url:
                     data = Self._fetch_from_platform(api_url, api_key)
 
