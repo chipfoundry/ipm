@@ -272,6 +272,7 @@ class IPInfo:
                     data = Self._fetch_from_platform(api_url, api_key)
 
             if data is None:
+                logger.print_warn("[yellow]⚠ Using GitHub catalog (platform API unavailable)[/yellow]")
                 session = GitHubSession()
                 resp = session.get(VERIFIED_JSON_FILE_URL)
                 session.throw_status(resp, "download IP release index")
