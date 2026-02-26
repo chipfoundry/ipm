@@ -178,12 +178,34 @@ class IPInfo:
     cache: ClassVar[Optional[dict]] = None
 
     @staticmethod
+    def _parse_toml_simple(path):
+        """Minimal TOML key=value parser for flat config files (no sections/tables)."""
+        cfg = {}
+        try:
+            with open(path, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
+                    if "=" in line:
+                        key, _, val = line.partition("=")
+                        val = val.strip().strip('"').strip("'")
+                        cfg[key.strip()] = val
+        except Exception:
+            pass
+        return cfg
+
+    @staticmethod
     def _load_platform_config():
-        """Load API URL and key from cf-cli config or environment."""
-        api_url = os.getenv("IPM_API_URL")
+        """Load API URL and key from cf-cli config or environment.
+
+        The catalog endpoint is public so we always default to the platform URL.
+        An API key is optional but included if present.
+        """
+        api_url = os.getenv("IPM_API_URL") or PLATFORM_CATALOG_URL
         api_key = None
 
-        if not api_url and os.path.exists(CF_CLI_CONFIG_PATH):
+        if os.path.exists(CF_CLI_CONFIG_PATH):
             try:
                 import tomllib
             except ImportError:
@@ -196,14 +218,12 @@ class IPInfo:
                 try:
                     with open(CF_CLI_CONFIG_PATH, "rb") as f:
                         cfg = tomllib.load(f)
-                    api_key = cfg.get("api_key")
-                    if not api_url:
-                        api_url = PLATFORM_CATALOG_URL
                 except Exception:
-                    pass
+                    cfg = {}
+            else:
+                cfg = IPInfo._parse_toml_simple(CF_CLI_CONFIG_PATH)
 
-        if not api_url:
-            api_url = None
+            api_key = cfg.get("api_key") or None
 
         return api_url, api_key
 
