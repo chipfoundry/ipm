@@ -42,9 +42,16 @@ from .common import (
     default=os.path.join(os.getcwd(), "ip"),
     help="IP installation path",
 )
+@click.option(
+    "--api-url",
+    required=False,
+    help="ChipFoundry platform catalog API URL (overrides config/env)",
+)
 @opt_ipm_root
-def install_cmd(ip, ip_root, ipm_root=None, version=None, include_drafts=False, local_file=None):
+def install_cmd(ip, ip_root, ipm_root=None, version=None, include_drafts=False, local_file=None, api_url=None):
     """Install one of the verified IPs locally."""
+    if api_url:
+        os.environ["IPM_API_URL"] = api_url
     install(ip, ipm_root, version=version, ip_root=ip_root, include_drafts=include_drafts, local_file=local_file)
 
 
@@ -121,8 +128,15 @@ def uninstall(
     required=False,
     help="Path to local verified_IPs.json file",
 )
-def ls_remote_cmd(category, technology, include_drafts, local_file):
+@click.option(
+    "--api-url",
+    required=False,
+    help="ChipFoundry platform catalog API URL (overrides config/env)",
+)
+def ls_remote_cmd(category, technology, include_drafts, local_file, api_url):
     """Lists all verified IPs in ipm's database"""
+    if api_url:
+        os.environ["IPM_API_URL"] = api_url
     ls_remote(category, technology, include_drafts, local_file)
 
 
