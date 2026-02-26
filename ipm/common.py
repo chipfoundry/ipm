@@ -42,8 +42,10 @@ from .version_check import check_for_updates
 VERIFIED_JSON_FILE_URL = (
     "https://raw.githubusercontent.com/chipfoundry/ipm-platform/refs/heads/main/verified_IPs.json"
 )
+PLATFORM_CATALOG_URL = "https://api.chipfoundry.io/api/v1/catalog/ipm"
 DEPENDENCIES_FILE_NAME = "dependencies.json"
 IPM_DEFAULT_HOME = os.path.join(os.path.expanduser("~"), ".ipm")
+CF_CLI_CONFIG_PATH = os.path.join(os.path.expanduser("~"), ".chipfoundry-cli", "config.toml")
 
 
 def opt_ipm_root(function: Callable):
@@ -175,6 +177,54 @@ class Logger:
 class IPInfo:
     cache: ClassVar[Optional[dict]] = None
 
+    @staticmethod
+    def _load_platform_config():
+        """Load API URL and key from cf-cli config or environment."""
+        api_url = os.getenv("IPM_API_URL")
+        api_key = None
+
+        if not api_url and os.path.exists(CF_CLI_CONFIG_PATH):
+            try:
+                import tomllib
+            except ImportError:
+                try:
+                    import tomli as tomllib
+                except ImportError:
+                    tomllib = None
+
+            if tomllib:
+                try:
+                    with open(CF_CLI_CONFIG_PATH, "rb") as f:
+                        cfg = tomllib.load(f)
+                    api_key = cfg.get("api_key")
+                    if not api_url:
+                        api_url = PLATFORM_CATALOG_URL
+                except Exception:
+                    pass
+
+        if not api_url:
+            api_url = None
+
+        return api_url, api_key
+
+    @classmethod
+    def _fetch_from_platform(Self, api_url, api_key):
+        """Fetch the IP catalog from the platform API. Returns dict or None on failure."""
+        logger = Logger()
+        headers = {"User-Agent": f"ipm/{__version__}"}
+        if api_key:
+            headers["Authorization"] = f"Bearer {api_key}"
+        try:
+            resp = httpx.get(api_url, headers=headers, timeout=10.0)
+            resp.raise_for_status()
+            data = resp.json()
+            data.pop("_meta", None)
+            logger.print_info("[dim]Catalog fetched from ChipFoundry platform[/dim]")
+            return data
+        except Exception as e:
+            logger.print_warn(f"[yellow]Platform catalog unavailable ({e}), falling back to GitHub[/yellow]")
+            return None
+
     @classmethod
     def get_verified_ip_info(Self, ip_name=None, include_drafts=False, local_file=None):
         """Get IP info from remote or local verified backend.
@@ -196,12 +246,18 @@ class IPInfo:
             with open(local_file, "r") as f:
                 data = json.load(f)
         else:
-            session = GitHubSession()
             if data is None:
+                api_url, api_key = Self._load_platform_config()
+                if api_url:
+                    data = Self._fetch_from_platform(api_url, api_key)
+
+            if data is None:
+                session = GitHubSession()
                 resp = session.get(VERIFIED_JSON_FILE_URL)
                 session.throw_status(resp, "download IP release index")
                 data = resp.json()
-                Self.cache = data
+
+            Self.cache = data
 
         if ip_name:
             if ip_name in data:
