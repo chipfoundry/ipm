@@ -143,16 +143,18 @@ class GitHubSession(httpx.Client):
         try:
             r.raise_for_status()
         except httpx.HTTPStatusError as e:
+            url = str(r.url)
             if e.response.status_code == 404:
                 raise RuntimeError(
-                    f"Failed to {purpose}: Make sure that GITHUB_TOKEN is set and has the proper permissions (404)"
+                    f"Failed to {purpose} (404): {url}\n"
+                    f"If the repo is private, make sure GITHUB_TOKEN is set with proper permissions."
                 )
             elif e.response.status_code == 401:
                 raise RuntimeError(
-                    f"Failed to {purpose} IP releases: GITHUB_TOKEN is invalid (401)"
+                    f"Failed to {purpose}: GITHUB_TOKEN is invalid (401)"
                 )
             else:
-                raise RuntimeError(f"Failed to {purpose} ({e.response.status_code})")
+                raise RuntimeError(f"Failed to {purpose} ({e.response.status_code}): {url}")
 
 
 class Logger:
