@@ -782,7 +782,7 @@ class IP:
         if repo.startswith("github.com/"):
             repo = repo[len("github.com/") :]
 
-        return Self(ip_name, version, repo, ipm_root, release.get("sha256", None), ip_root)
+        return Self(ip_name, version, repo, ipm_root, release.get("sha256") or None, ip_root)
 
     # ---
     @property
@@ -1027,8 +1027,8 @@ class IP:
                         raise RuntimeError(
                             f"Hash mismatch for {self.full_name}'s download:\n"
                             + f"\tURL:       {release_url}\n"
-                            + f"\tGot:        {self.sha256}\n"
-                            + f"\tExpecting:  {sha256}"
+                            + f"\tExpected:   {self.sha256}\n"
+                            + f"\tGot:        {sha256}"
                         )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
