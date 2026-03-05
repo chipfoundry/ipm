@@ -1015,18 +1015,21 @@ class IP:
 
             if not no_verify_hash:
                 sha256 = hashlib.sha256(open(tgz_path, "rb").read()).hexdigest()
-                if self.sha256 is None:
-                    logger = Logger()
-                    logger.print_warn(
-                        f"[yellow]⚠ No sha256 in catalog for {self.full_name} — skipping hash verification[/yellow]"
-                    )
-                elif sha256 != self.sha256:
-                    raise RuntimeError(
-                        f"Hash mismatch for {self.full_name}'s download:\n"
-                        + f"\tURL:       {release_url}\n"
-                        + f"\tExpected:   {self.sha256}\n"
-                        + f"\tGot:        {sha256}"
-                    )
+                if sha256 != self.sha256:
+                    if self.sha256 is None:
+                        raise RuntimeError(
+                            f"Refusing to unpack tarball for {self.full_name}: Missing 'sha256' field in release\n"
+                            + f"\tURL:       {release_url}\n"
+                            + f"\tGot:       {sha256}\n"
+                            + "\tPlease submit an issue to the IPM repository."
+                        )
+                    else:
+                        raise RuntimeError(
+                            f"Hash mismatch for {self.full_name}'s download:\n"
+                            + f"\tURL:       {release_url}\n"
+                            + f"\tExpected:   {self.sha256}\n"
+                            + f"\tGot:        {sha256}"
+                        )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
                 r.raise_for_status()
