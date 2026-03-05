@@ -143,16 +143,18 @@ class GitHubSession(httpx.Client):
         try:
             r.raise_for_status()
         except httpx.HTTPStatusError as e:
+            url = str(r.url)
             if e.response.status_code == 404:
                 raise RuntimeError(
-                    f"Failed to {purpose}: Make sure that GITHUB_TOKEN is set and has the proper permissions (404)"
+                    f"Failed to {purpose} (404): {url}\n"
+                    f"If the repo is private, make sure GITHUB_TOKEN is set with proper permissions."
                 )
             elif e.response.status_code == 401:
                 raise RuntimeError(
-                    f"Failed to {purpose} IP releases: GITHUB_TOKEN is invalid (401)"
+                    f"Failed to {purpose}: GITHUB_TOKEN is invalid (401)"
                 )
             else:
-                raise RuntimeError(f"Failed to {purpose} ({e.response.status_code})")
+                raise RuntimeError(f"Failed to {purpose} ({e.response.status_code}): {url}")
 
 
 class Logger:
@@ -780,7 +782,7 @@ class IP:
         if repo.startswith("github.com/"):
             repo = repo[len("github.com/") :]
 
-        return Self(ip_name, version, repo, ipm_root, release.get("sha256", None), ip_root)
+        return Self(ip_name, version, repo, ipm_root, release.get("sha256") or None, ip_root)
 
     # ---
     @property
@@ -1025,8 +1027,8 @@ class IP:
                         raise RuntimeError(
                             f"Hash mismatch for {self.full_name}'s download:\n"
                             + f"\tURL:       {release_url}\n"
-                            + f"\tGot:        {self.sha256}\n"
-                            + f"\tExpecting:  {sha256}"
+                            + f"\tExpected:   {self.sha256}\n"
+                            + f"\tGot:        {sha256}"
                         )
 
             with tarfile.open(tgz_path, mode="r:gz") as tf:
