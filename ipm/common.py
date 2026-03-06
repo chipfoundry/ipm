@@ -802,12 +802,31 @@ class IP:
             raise RuntimeError("Cannot install without an IPM root")
 
         logger = Logger()
-        if not os.path.isdir(self.path_in_ipm_root):
+        dest = self.path_in_ipm_root
+        version_file = os.path.join(dest, ".ipm_version")
+
+        if os.path.isdir(dest):
+            installed_version = None
+            try:
+                with open(version_file, "r") as f:
+                    installed_version = f.read().strip()
+            except FileNotFoundError:
+                pass
+
+            if installed_version != self.version:
+                logger.print_info(
+                    f"{indent(depth)}* Replacing stale IP [cyan]{self.ip_name}[/cyan] "
+                    f"({installed_version or 'unknown'} → {self.version}) at {dest}…"
+                )
+                shutil.rmtree(dest)
+
+        if not os.path.isdir(dest):
             logger.print_info(
-                f"{indent(depth)}* Installing IP [cyan]{self.full_name}[/cyan] at {self.path_in_ipm_root}…"
+                f"{indent(depth)}* Installing IP [cyan]{self.full_name}[/cyan] at {dest}…"
             )
-            self.download_tarball(self.path_in_ipm_root)
-            # change_dir_to_readonly(self.ipm_root)
+            self.download_tarball(dest)
+            with open(version_file, "w") as f:
+                f.write(self.version)
 
     @property
     def installed(self):
@@ -984,8 +1003,11 @@ class IP:
                 page += 1
 
             asset_id = None
+            repo_name = self.repo.split("/")[-1] if self.repo else self.ip_name
+            match_names = {self.ip_name, repo_name}
             for release in releases:
-                if self.ip_name in release["tarball_url"].split("/")[-1]:
+                tag_part = release["tarball_url"].split("/")[-1]
+                if any(name in tag_part for name in match_names):
                     for assets in release["assets"]:
                         for asset_name, asset_value in assets.items():
                             if (
