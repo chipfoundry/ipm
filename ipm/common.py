@@ -1256,8 +1256,14 @@ class Checks:
         """Checks if the content includes specific sections and returns any missing ones."""
         missing_sections = []
         for section in sections:
-            if not re.search(
-                rf"^\s*#*\s*{re.escape(section)}", content, re.MULTILINE | re.IGNORECASE
+            aliases = ("Pinout", "Block Diagram") if section == "Pinout" else (section,)
+            if not any(
+                re.search(
+                    rf"^\s*#*\s*{re.escape(alias)}",
+                    content,
+                    re.MULTILINE | re.IGNORECASE,
+                )
+                for alias in aliases
             ):
                 missing_sections.append(section)
         return missing_sections
@@ -1274,12 +1280,13 @@ class Checks:
             )
             return False
 
-        # Define required sections
+        # Pinout is the customer heading. "Block Diagram" remains a valid alias
+        # for packages that have not been revised.
         required_sections = [
             "Overview",
             "Installation",
             "Features",
-            "Block Diagram",
+            "Pinout",
             "Pin Description",
             "Specifications",
             "Timing Diagram",
