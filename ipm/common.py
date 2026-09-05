@@ -179,6 +179,7 @@ class Logger:
 
 class IPInfo:
     cache: ClassVar[Optional[dict]] = None
+    _cache_by_flag: ClassVar[dict] = {}
     use_test: ClassVar[bool] = False
 
     @staticmethod
@@ -232,14 +233,15 @@ class IPInfo:
         return api_url, api_key
 
     @classmethod
-    def _fetch_from_platform(Self, api_url, api_key):
+    def _fetch_from_platform(Self, api_url, api_key, include_drafts=False):
         """Fetch the IP catalog from the platform API. Returns dict or None on failure."""
         logger = Logger()
         headers = {"User-Agent": f"ipm/{__version__}"}
         if api_key:
             headers["Authorization"] = f"Bearer {api_key}"
+        params = {"include_drafts": "true"} if include_drafts else None
         try:
-            resp = httpx.get(api_url, headers=headers, timeout=10.0)
+            resp = httpx.get(api_url, headers=headers, params=params, timeout=10.0)
             resp.raise_for_status()
             data = resp.json()
             data.pop("_meta", None)
@@ -262,7 +264,7 @@ class IPInfo:
             dict: Info of the IP.
         """
         logger = Logger()
-        data = Self.cache
+        data = None
 
         # Check for a local verified_IPs.json file
         if local_file and os.path.exists(local_file):
@@ -270,19 +272,24 @@ class IPInfo:
             with open(local_file, "r") as f:
                 data = json.load(f)
         else:
+            cache_key = (Self.use_test, bool(include_drafts))
+            data = Self._cache_by_flag.get(cache_key)
             if data is None:
                 api_url, api_key = Self._load_platform_config(use_test=Self.use_test)
                 if api_url:
-                    data = Self._fetch_from_platform(api_url, api_key)
+                    data = Self._fetch_from_platform(
+                        api_url, api_key, include_drafts=include_drafts
+                    )
 
-            if data is None:
-                logger.print_warn("[yellow]⚠ Using GitHub catalog (platform API unavailable)[/yellow]")
-                session = GitHubSession()
-                resp = session.get(VERIFIED_JSON_FILE_URL)
-                session.throw_status(resp, "download IP release index")
-                data = resp.json()
+                if data is None:
+                    logger.print_warn("[yellow]⚠ Using GitHub catalog (platform API unavailable)[/yellow]")
+                    session = GitHubSession()
+                    resp = session.get(VERIFIED_JSON_FILE_URL)
+                    session.throw_status(resp, "download IP release index")
+                    data = resp.json()
 
-            Self.cache = data
+                Self._cache_by_flag[cache_key] = data
+                Self.cache = data
 
         if ip_name:
             if ip_name in data:
